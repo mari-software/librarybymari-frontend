@@ -14,9 +14,9 @@
 		navBarLogoSource = '',
 		navBarLogoTextSource = '',
 
-		footerTextCopyright = 'Copyright &copy; {new Date().getFullYear()} Mari_Gold',
-		footerTextAllRights = 'All rights reserved',
-		footerContactText = 'Get regular updated for better experience'
+		footerTextCopyright = '',
+		footerTextAllRights = '',
+		footerContactText = ''
 	}: FooterBarInterface = $props();
 </script>
 
