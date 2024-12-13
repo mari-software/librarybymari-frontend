@@ -32,13 +32,19 @@
 		});
 	});
 
-	let swiperContent = [
+	interface carouselInterface {
+		// Config
+		swiperContentSource: {content: any}[];
+	}
+
+	let {
+		swiperContentSource = [
 		{ content: 'This is the first slide' },
 		{ content: 'This is the second slide' },
 		{ content: 'This is the third slide' },
 		{ content: 'This is the fourth slide' },
 		{ content: 'This is the fifth slide' }
-	];
+	]}: carouselInterface = $props();
 </script>
 
 <main>
@@ -50,7 +56,7 @@
 			<div class="swiper-slide">SLide 4</div>
 			<div class="swiper-slide">Slide 5</div> -->
 
-			{#each swiperContent as slide}
+			{#each swiperContentSource as slide}
 				<div class="swiper-slide">{slide.content}</div>
 			{/each}
 		</div>
@@ -92,12 +98,13 @@
 		& .swiper-pagination {
 			position: absolute;
             display: block;
-			bottom: 10px;
+			bottom: 0;
 			left: 50%;
 			transform: translateX(-50%);
 			text-align: center;
 			width: 10px;
             height: 10px;
+			border-radius: 50%;
 			background-color: black;
 		}
 		& .swiper-button-next,

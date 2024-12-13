@@ -12,6 +12,8 @@
 		navBarSearchToggle?: boolean;
 		navBarSearchSource?: string;
 
+		navBarHeaderDropDown?: boolean;
+
 		NavBarMenuButtonToggle?: boolean;
 		NavBarMenuButtonSource?: string;
 
@@ -31,6 +33,8 @@
 
 		navBarSearchToggle = undefined,
 		navBarSearchSource = '',
+
+		navBarHeaderDropDown = undefined,
 
 		NavBarMenuButtonToggle = undefined,
 		NavBarMenuButtonSource = '',
@@ -71,6 +75,19 @@
 			</div>
 
 			<div class="headerMenu">
+
+				<!-- {#if navBarHeaderDropDown}
+				<div class="dropDown">
+					<button class="combo-box-button" onclick={toggleDropdown()}>Combo-Box</button>
+					<div class="combo-box-content" id="dropdown">
+						<a href="/">Option-1</a>
+						<a href="/">Option-2</a>
+						<a href="/">Option-3</a>
+						<a href="/">Option-4</a>
+					</div>
+				</div>
+				{/if} -->
+
 				{#if NavBarMenuButtonToggle}
 					<button class="headerMenuButton">
 						<span>
