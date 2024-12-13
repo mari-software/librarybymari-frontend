@@ -4,30 +4,39 @@
 		carouselDataSource: any[];
 		carouselDataTextSource?: string;
 		carouselDataHeaderSource?: string;
+		
+		sliderToggle?: boolean;
+		sliderImage?: boolean;
+		sliderText?: boolean;
+		sliderHeading?: boolean;
+		
+		// Style
+		
+		// Function
 		active: number;
 		itemLength: number;
-
-		// Style
-
-		// Function
 	}
 
 	let {
 		//Config
 		carouselDataSource = [],
+		
+		sliderToggle = true,
+		sliderImage = false,
+		sliderText = true,
+		sliderHeading = true,
 
-		itemLength = carouselDataSource.length,
-		active = 0,
-
-		carouselDataHeaderSource = '',
-		carouselDataTextSource = '',
-
+		
 		// Function
+		itemLength = carouselDataSource.length ,
+		active = 0
 	}: carouselInterface = $props();
 
-	function setActive(index: number) {
+	
+
+	/* function setActive(index: number) {
 		active = index;
-	}
+	} */
 
 	const nextSlide = () => {
 		active = active + 1 > itemLength ? 0 : active + 1;
@@ -42,52 +51,55 @@
 	<div class="carousel">
 		<div class="slides" style="transform: translateX(-{active * 100}%)">
 			{#each carouselDataSource as { image, heading, carouselDataHeaderSource, carouselDataTextSource, index }}
-  <div class="slide" class:active={active === index} >
-    <div class="slideText">
-    
-        {#if heading}
-      <h2>{carouselDataHeaderSource}</h2>
-        {/if}
-        {#if Text}
-            
-            <p>{carouselDataTextSource}</p>
-        {/if}
-    </div>
-    <img src={image} alt={heading} />
-  </div>
-{/each}
+				<div class="slide" class:active={active === index}>
+					{#if sliderToggle}
+						
+					<div class="slideText">
+						{#if sliderHeading}
+							<h2>{carouselDataHeaderSource}</h2>
+						{/if}
+						{#if sliderText}
+							<p>{carouselDataTextSource}</p>
+						{/if}
+					</div>
+					{/if}
 
+					{#if sliderImage}
+					<img src={image} alt={heading} />
+					{/if}
+				</div>
+			{/each}
 		</div>
 
 		<button class="previous" onclick={prevSlide}> &lt; </button>
 
 		<button class="next" onclick={nextSlide}> &gt; </button>
 
-		<div class="indicators">
+		<!-- <div class="indicators">
 			{#each carouselDataSource as _, index}
 				<div class="dot {active === index ? 'active' : ''}" onclick={() => setActive(index)}></div>
 			{/each}
-		</div>
+		</div> -->
 	</div>
 </main>
 
 <style>
 	main {
-		
 		& .carousel {
 			position: relative;
 			width: 100%;
-			
+
 			height: 20rem;
 			overflow: hidden;
 
 			& .slides {
 				display: flex;
 				transition: transform 0.5s ease;
-				
 
 				& .slide {
-                    min-width: 100%;
+				border: #000000 solid 1px;
+				width: 50px;
+					min-width: 100%;
 					box-sizing: border-box;
 					padding: 1.25rem;
 					text-align: center;
@@ -104,11 +116,11 @@
 		& .next {
 			position: absolute;
 			top: 50%;
-           font-size: 2.5rem;
+			font-size: 2.5rem;
 			border: none;
 			border-radius: 50%;
 			cursor: pointer;
-            transform: translateY(-50%);
+			transform: translateY(-50%);
 			transition: all 0.2s ease-in-out;
 		}
 
@@ -126,7 +138,7 @@
 			color: white;
 		} */
 
-		& .indicators {
+		/* & .indicators {
 			position: absolute;
 			display: flex;
 			justify-content: space-evenly;
@@ -154,6 +166,6 @@
 					background-color: #000000;
 				}
 			}
-		}
+		} */
 	}
 </style>
