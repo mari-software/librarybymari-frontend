@@ -20,6 +20,8 @@
 		NavBarMenuIconToggle?: boolean;
 		NavBarMenuIconSource?: string;
 
+		navBarMenuIconText?: string;
+
 		// Style
 	}
 
@@ -40,12 +42,18 @@
 		NavBarMenuButtonSource = '',
 
 		NavBarMenuIconToggle = undefined,
-		NavBarMenuIconSource = ''
+		NavBarMenuIconSource = '',
+
+		navBarMenuIconText = 'GitHub',
+
 	}: navigationBarInterface = $props();
 
 	// Function
 
-	let activeNavMenu = null;
+	let activeNavMenu = $state('activeNavMenu');
+	let isDropdownOpen = $state(false);
+
+	
 
 	function setActive(selectedNavMenu: string) {
 		activeNavMenu = selectedNavMenu;
@@ -68,7 +76,7 @@
 				{/if}
 
 				<nav class="navbarMenu">
-					<a href="/Dashboard" onclick={() => setActive(navBarMenuSource)} class="navItem active"
+					<a href="/" onclick={() => setActive(navBarMenuSource)} class="navItem {activeNavMenu === navBarMenuSource ? 'active' : ''}"
 						>{navBarMenuSource}</a
 					>
 				</nav>
@@ -78,7 +86,7 @@
 
 				<!-- {#if navBarHeaderDropDown}
 				<div class="dropDown">
-					<button class="combo-box-button" onclick={toggleDropdown()}>Combo-Box</button>
+					<button class="combo-box-button" onclick={toggleDropdown()}>Version</button>
 					<div class="combo-box-content" id="dropdown">
 						<a href="/">Option-1</a>
 						<a href="/">Option-2</a>
@@ -110,32 +118,11 @@
 				{#if NavBarMenuIconToggle}
 					<img src={NavBarMenuIconSource} alt="" class="MenuIcon" />
 				{/if}
+				<p>{navBarMenuIconText}</p>
 			</div>
 		{/if}
 	</header>
-	<!-- <div class="main-entrance">
-		<h1>Mari Gold</h1>
-		<p>Build your ideas faster</p>
-		<button>See more</button>
-	</div>
 
-	<footer>
-		<div class="footerBar">
-			<div class="footerLogo">
-				<img src={navBarLogoSource} alt="logo" class="logo" />
-				<span class="logoText">{navBarLogoTextSource}</span>
-			</div>
-			<p class="footerCopyrightText">Copyright &copy; {new Date().getFullYear()} Mari_Gold</p>
-      <p class="footerCopyrightText">All rights reserved</p>
-			<div class="footerContact">
-				<p>Get regular updated for better experience</p>
-				<div class="footerEmail">
-					<input type="email" placeholder="Email address" class="footerEmailInput" />
-					<button type="submit" class="footerEmailButton">✈</button>
-				</div>
-			</div>
-		</div>
-	</footer> -->
 </main>
 
 <style>
@@ -147,12 +134,10 @@
 			justify-content: space-between;
 			background-color: rgba(250, 249, 253, 1);
 			box-shadow: 0.1875rem 0.1875rem 0.3125rem rgba(0, 0, 0, 0.1);
-
 			width: 100%;
 			box-sizing: border-box;
 
 			& .headerSectionDiv .headerSearch {
-				max-width: 200%;
 				width: 100%;
 			}
 
@@ -161,12 +146,12 @@
 				align-items: center;
 
 				& .logo {
-					height: 4.6875rem;
+					height: 4.2rem;
 					margin-right: 0.5rem;
 				}
 
 				& .logoText {
-					font-size: 1.5625rem;
+					font-size: 1.5rem;
 					font-weight: bold;
 				}
 			}
@@ -196,13 +181,13 @@
 				& .headerMenuButton {
 					display: flex;
 					align-items: center;
-					padding: 0.3125rem 1.25rem;
+					padding: 0.3rem 1rem;
 					border: none;
 					border-radius: 1.25rem;
 					color: black;
-					font-size: 1.25rem;
+					font-size: 1rem;
 					font-weight: bold;
-					margin-right: 0.625rem;
+					margin-right: 0.6rem;
 					cursor: pointer;
 					box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.5);
 					transition:
@@ -215,17 +200,18 @@
 					}
 
 					& span {
-						margin-right: 0.9375rem;
+						margin-right: 0.5rem;
 					}
 				}
 
 				& .MenuIcon {
-					height: 2.5rem;
-					width: 2.5rem;
-					border-radius: 50%;
-					margin-right: 1rem;
-					box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.5);
+					height: 2rem;
 					cursor: pointer;
+					
+					/* width: 3rem;
+					margin-right: 1rem;
+					border-radius: 50%;
+					box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.5);
 					transition:
 						transform 0.2s ease,
 						box-shadow 0.2s ease;
@@ -233,7 +219,14 @@
 					&:active {
 						transform: translateY(0.125rem);
 						box-shadow: 0.0625rem 0.0625rem 0.3125rem rgba(0, 0, 0, 0.3);
-					}
+					} */
+				}
+
+				& p {
+					font-size: 1.25rem;
+					font-weight: bold;
+					cursor: pointer;
+					margin-right: 1rem;
 				}
 			}
 		}
@@ -246,7 +239,7 @@
 
 		& .navItem {
 			text-decoration: none;
-			font-size: 1.25rem;
+			font-size: 1.1rem;
 			justify-content: space-evenly;
 			font-weight: 500;
 			color: rgba(102, 102, 102, 1);

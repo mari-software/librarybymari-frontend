@@ -12,12 +12,12 @@
 	navBarLogoSource="https://i.pinimg.com/736x/9a/97/4f/9a974f42aff13171296fbc5ed59ece40.jpg"
 	navBarMenuToggle={true}
 	navBarMenuSource="Dashboard"
-	navBarSearchToggle={false}
+	navBarSearchToggle={true}
 	navBarSearchSource="🔍 What's on your mind?"
-	NavBarMenuButtonToggle={false}
+	NavBarMenuButtonToggle={true}
 	NavBarMenuButtonSource="Create"
 	NavBarMenuIconToggle={true}
-	NavBarMenuIconSource="https://cdn-icons-png.flaticon.com/512/147/147144.png"
+	NavBarMenuIconSource="https://banner2.cleanpng.com/20180617/uzy/kisspng-gitlab-github-continuous-integration-computer-icon-5b25ebd5d3e583.5178856115292118618679.jpg"
 />
 
 <Entrance
@@ -65,11 +65,11 @@
 	carouselDataTextSource=""
 	carouselDataHeaderSource=""
 	sliderToggle={true}
-	sliderImage={false}
+	sliderImage={true}
 	sliderText={true}
-	sliderHeading={false}
+	sliderHeading={true}
 	active={0}
-	itemLength={3}
+	itemLength={1}
 />
 
 <hr />
@@ -97,9 +97,9 @@
 	carouselDataTextSource=""
 	carouselDataHeaderSource=""
 	sliderToggle={true}
-	sliderImage={false}
+	sliderImage={true}
 	sliderText={true}
-	sliderHeading={false}
+	sliderHeading={true}
 	active={0}
 	itemLength={3}
 />

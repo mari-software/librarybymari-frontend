@@ -34,16 +34,16 @@
 
 	interface carouselInterface {
 		// Config
-		swiperContentSource: {content: any}[];
+		swiperContentSource: any[];
 	}
 
 	let {
 		swiperContentSource = [
-		{ content: 'This is the first slide' },
-		{ content: 'This is the second slide' },
-		{ content: 'This is the third slide' },
-		{ content: 'This is the fourth slide' },
-		{ content: 'This is the fifth slide' }
+		{ slideDescription: 'This is the first slide' , slideImage: 'https://img.freepik.com/premium-vector/3d-illustration-3d-3d-3d-model-3d-model-3d-illustration-3d-3d-illustration_1079-1469.jpg?w=2000', slideHeader: 'Slide 1' },
+		{ slideDescription: 'This is the first slide' , slideImage: 'https://img.freepik.com/premium-vector/3d-illustration-3d-3d-3d-model-3d-model-3d-illustration-3d-3d-illustration_1079-1469.jpg?w=2000', slideHeader: 'Slide 1'  },
+		{ slideDescription: 'This is the first slide' , slideImage: 'https://img.freepik.com/premium-vector/3d-illustration-3d-3d-3d-model-3d-model-3d-illustration-3d-3d-illustration_1079-1469.jpg?w=2000', slideHeader: 'Slide 1'  },
+		{ slideDescription: 'This is the first slide' , slideImage: 'https://img.freepik.com/premium-vector/3d-illustration-3d-3d-3d-model-3d-model-3d-illustration-3d-3d-illustration_1079-1469.jpg?w=2000', slideHeader: 'Slide 1'  },
+		{ slideDescription: 'This is the first slide' , slideImage: 'https://img.freepik.com/premium-vector/3d-illustration-3d-3d-3d-model-3d-model-3d-illustration-3d-3d-illustration_1079-1469.jpg?w=2000', slideHeader: 'Slide 1'  }
 	]}: carouselInterface = $props();
 </script>
 
@@ -56,8 +56,8 @@
 			<div class="swiper-slide">SLide 4</div>
 			<div class="swiper-slide">Slide 5</div> -->
 
-			{#each swiperContentSource as slide}
-				<div class="swiper-slide">{slide.content}</div>
+			{#each swiperContentSource as { slideImage, slideHeader, slideDescription}}
+				<div class="swiper-slide">{slideDescription}</div>
 			{/each}
 		</div>
 
