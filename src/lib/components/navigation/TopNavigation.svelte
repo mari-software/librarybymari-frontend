@@ -1,5 +1,5 @@
 <script lang="ts">
-	/* 	import '../Global.css'; */
+	import SVG from './1203966 1.svg';
 
 	interface navigationBarInterface {
 		// Config
@@ -67,6 +67,8 @@
 	function setActive(selectedNavMenu: string) {
 		activeNavMenu = selectedNavMenu;
 	}
+
+	
 </script>
 
 <main>
@@ -77,13 +79,6 @@
 		</div>
 		{#if navBarMenuToggle}
 			<div class="headerSectionDiv">
-				{#if navBarSearchToggle}
-					<div class="headerSearch">
-						<input type="text" class="searchBox" placeholder={navBarSearchSource} />
-					</div>
-					<hr />
-				{/if}
-
 				<nav class="navbarMenu">
 					{#each navBarMenuSource as { options, link }}
 						<a
@@ -92,6 +87,19 @@
 							class="navItem {activeNavMenu === options ? 'active' : ''}">{options}</a
 						>
 					{/each}
+								<!-- svelte-ignore a11y_click_events_have_key_events -->
+				<!-- svelte-ignore a11y_no_static_element_interactions -->
+
+				<div class="sideMenuIcon" >
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						height="24px"
+						viewBox="0 -960 960 960"
+						width="24px"
+						fill="black"
+						><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg
+					>
+				</div>
 				</nav>
 			</div>
 
@@ -111,39 +119,11 @@
 					</div>
 				{/if}
 
-				{#if NavBarMenuButtonToggle}
-					<button class="headerMenuButton">
-						<span>
-							<svg
-								width="15"
-								height="15"
-								viewBox="0 0 20 20"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									d="M11.3462 2.59615C11.3462 1.85156 10.7446 1.25 10 1.25C9.25541 1.25 8.65385 1.85156 8.65385 2.59615V8.65385H2.59615C1.85156 8.65385 1.25 9.25541 1.25 10C1.25 10.7446 1.85156 11.3462 2.59615 11.3462H8.65385V17.4038C8.65385 18.1484 9.25541 18.75 10 18.75C10.7446 18.75 11.3462 18.1484 11.3462 17.4038V11.3462H17.4038C18.1484 11.3462 18.75 10.7446 18.75 10C18.75 9.25541 18.1484 8.65385 17.4038 8.65385H11.3462V2.59615Z"
-									fill="black"
-								/>
-							</svg>
-						</span>
-						{NavBarMenuButtonSource}
-					</button>
-				{/if}
-
-				<!-- svelte-ignore a11y_click_events_have_key_events -->
-				<!-- svelte-ignore a11y_no_static_element_interactions -->
-
-				<div class="sideMenuIcon">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						height="24px"
-						viewBox="0 -960 960 960"
-						width="24px"
-						fill="black"
-						><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg
-					>
+				<div class="navBarIcon">
+					<img src={SVG} alt="" />
 				</div>
+
+	
 
 				{#if NavBarMenuIconToggle}
 					<img src={NavBarMenuIconSource} alt="" class="MenuIcon" />
@@ -166,17 +146,19 @@
 			width: 100%;
 			box-sizing: border-box;
 
-			& .headerSectionDiv .headerSearch {
-				width: 100%;
-			}
-
 			& .headerLogo {
 				display: flex;
 				align-items: center;
+				overflow: hidden;
 
 				& .logo {
 					height: 4.2rem;
-					margin-right: 0.5rem;
+					margin-left: 1.5rem;
+					transition: all 0.3s ease-in-out;
+
+					&:hover {
+						transform: scale(1.2);
+					}
 				}
 
 				& .logoText {
@@ -185,67 +167,14 @@
 				}
 			}
 
-			& .headerSearch {
-				flex: 1;
-				display: flex;
-				justify-content: center;
-				width: 100%;
-
-				& .searchBox {
-					width: 100%;
-					max-width: 35rem;
-					box-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.25);
-					padding: 0.5rem 0.75rem;
-					border: 0.0625rem solid rgba(250, 249, 253, 1);
-					border-radius: 0.625rem;
-					font-size: 0.875rem;
-					outline: none;
-				}
+			& .sideMenuIcon {
+				position: relative;
+				display: none;
 			}
-
 			& .headerMenu {
 				display: flex;
 				align-items: center;
 
-				& .headerMenuButton {
-					display: flex;
-					align-items: center;
-					padding: 0.3rem 1rem;
-					border: none;
-					border-radius: 1.25rem;
-					color: black;
-					font-size: 1rem;
-					font-weight: bold;
-					margin-right: 0.6rem;
-					cursor: pointer;
-					box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.5);
-					transition:
-						transform 0.2s ease,
-						box-shadow 0.2s ease;
-
-					&:active {
-						transform: translateY(0.125rem);
-						box-shadow: 0.0625rem 0.0625rem 0.3125rem rgba(0, 0, 0, 0.3);
-					}
-
-					& span {
-						margin-right: 0.5rem;
-					}
-				}
-
-				& .sideMenuIcon {
-					position: relative;
-					display: none;
-
-					/* &::after {
-						content: 'x';
-						position: absolute;
-						top: 1.5rem;
-						right: 2rem;
-						font-size: 1.5rem;
-						cursor: pointer;
-					} */
-				}
 
 				& .MenuIcon {
 					height: 2rem;
@@ -285,7 +214,7 @@
 						}
 					}
 					#combo-box:checked + label::before {
-						transform: rotate(0deg);
+						transform: rotate(360deg);
 					}
 
 					.dropdown-content {
@@ -326,6 +255,10 @@
 					}
 				}
 			}
+
+			& .navBarIcon {
+				margin: 0 1.5rem;
+			}
 		}
 
 		& .navbarMenu {
@@ -351,11 +284,11 @@
 	@media (max-width: 768px) {
 		main {
 			& .headerNav {
+				& .sideMenuIcon {
+					display: block;
+					cursor: pointer;
+				}
 				& .headerMenu {
-					& .sideMenuIcon {
-						display: block;
-						cursor: pointer;
-					}
 
 					& p {
 						display: none;
@@ -373,8 +306,16 @@
 				display: none;
 				width: 90%;
 				left: 0;
-				text-align: center;
 				overflow: hidden;
+
+				&::after {
+					content: 'x';
+					position: absolute;
+					top: 1rem;
+					right: 2rem;
+					font-size: 1.5rem;
+					cursor: pointer;
+				}
 
 				& .navItem {
 					display: inline-block;
@@ -383,18 +324,19 @@
 					font-size: 1.1rem;
 					padding: 10px;
 					font-weight: 500;
-					margin: 0;
 					color: rgba(102, 102, 102, 1);
 
 					&:hover {
 						background-color: rgba(0, 0, 0, 0.468);
 					}
 
-
 					&.active {
 						color: rgba(0, 0, 0, 1);
 					}
 				}
+			}
+			& .navBarIcon {
+				display: none;
 			}
 		}
 	}

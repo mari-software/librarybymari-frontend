@@ -38,7 +38,7 @@
 			<div class="footerContact">
 				<p>{footerContactText}</p>
 				<div class="footerEmail">
-					<input type="email" placeholder="" class="footerEmailInput" />
+					<input type="email" placeholder="Email address" class="footerEmailInput" />
 					<!-- <div type="submit" class="footerEmailButton">✈</div> -->
 					<div class="footerEmailButton"><img src={SVG} alt="" /></div>
 				</div>
@@ -62,10 +62,16 @@
 				& .footerLogo {
 					display: flex;
 					align-items: center;
+					overflow: hidden;
 
 					& .logo {
 						height: 3rem;
 						margin-left: 1rem;
+						transition: all 0.3s ease-in-out;
+
+					&:hover {
+						transform: scale(1.2);
+					}
 					}
 
 					& .logoText {
