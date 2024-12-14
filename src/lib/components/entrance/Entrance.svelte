@@ -28,7 +28,8 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			background-color: var(--primary-color-variants-400);
+			height: 20rem;
+			background-color: rgba(239, 247, 251, 1);
 			padding: 5px;
 
 			& h1 {

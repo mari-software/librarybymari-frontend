@@ -8,7 +8,7 @@
 </script>
 
 <TopNavigation
-	navBarLogoTextSource="Mari_Gold"
+	navBarLogoTextSource="mari"
 	navBarLogoSource="https://i.pinimg.com/736x/9a/97/4f/9a974f42aff13171296fbc5ed59ece40.jpg"
 	navBarMenuToggle={true}
 
@@ -38,7 +38,7 @@
 />
 
 <Entrance
-	mainEntranceSource="Mari_Gold"
+	mainEntranceSource="mari"
 	mainEntranceText="Build your ideas faster"
 	mainEntranceButton="See more"
 />
@@ -48,46 +48,50 @@
 
 <!-- Carousel-1 -->
 
-<!-- <CarouselNext
+<CarouselNext
 	carouselDataSource={[
 		{
 			image:
 				'https://steamuserimages-a.akamaihd.net/ugc/2486634816019385799/42EAD597D63146529E43BAE1425E25FA5E39A9D3/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true',
 			heading: 'Slide 1',
 			carouselDataHeaderSource: 'Header for Slide 1',
-			carouselDataTextSource: 'Description for Slide 1'
+			carouselDataTextSource: 'Description for Slide 1',
+			link: '/'
 		},
 		{
 			image:
 				'https://static.animecorner.me/2024/09/1726468888-2731cfe1c0a510ad6809ed6cb3af3bcd.png',
 			heading: 'Slide 1',
 			carouselDataHeaderSource: 'Header for Slide 1',
-			carouselDataTextSource: 'Description for Slide 1'
+			carouselDataTextSource: 'Description for Slide 1',
+			link: '/'
 		},
 		{
 			image:
 				'https://i.ytimg.com/vi/A2x5q69sZNw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDl2AQfF3dzcAR-7L5YqhpGJpQW8w',
 			heading: 'Slide 1',
 			carouselDataHeaderSource: 'Header for Slide 1',
-			carouselDataTextSource: 'Description for Slide 1'
+			carouselDataTextSource: 'Description for Slide 1',
+			link: '/'
 		},
 		{
 			image:
 				'https://admin.esports.gg/wp-content/uploads/2024/11/Genshin-Impact-drip-marketing-Citlali-reveal-968x544.jpg',
 			heading: 'Slide 1',
 			carouselDataHeaderSource: 'Header for Slide 1',
-			carouselDataTextSource: 'Description for Slide 1'
+			carouselDataTextSource: 'Description for Slide 1',
+			link: '/'
 		}
 	]}
 	carouselDataTextSource=""
 	carouselDataHeaderSource=""
 	sliderToggle={true}
 	sliderImage={true}
-	sliderText={true}
+	sliderTextToggle={true}
 	sliderHeading={true}
 	active={0}
 	itemLength={2}
-/> -->
+/>
 
 <hr />
 
@@ -99,7 +103,7 @@
 	carouselDataHeaderSource=""
 	sliderToggle={true}
 	sliderImage={false}
-	sliderText={true}
+	sliderTextToggle={true}
 	sliderHeading={false}
 	active={0}
 	itemLength={3}
@@ -115,7 +119,7 @@
 	carouselDataHeaderSource=""
 	sliderToggle={true}
 	sliderImage={true}
-	sliderText={true}
+	sliderTextToggle={true}
 	sliderHeading={true}
 	active={0}
 	itemLength={3}
@@ -145,8 +149,8 @@
 <hr />
 <Footer
 	navBarLogoSource="https://anibase.net/files/200e4fbbc54f6ffdb2565919c2fa354d"
-	navBarLogoTextSource="Mari_Gold"
-	footerTextCopyright={`Copyright &copy; ${new Date().getFullYear()} Mari_Gold`}
+	navBarLogoTextSource="mari"
+	footerTextCopyright={`Copyright &copy; ${new Date().getFullYear()} mari`}
 	footerTextAllRights="All rights reserved"
 	footerContactText="Get regular updated for better experience"
 />
