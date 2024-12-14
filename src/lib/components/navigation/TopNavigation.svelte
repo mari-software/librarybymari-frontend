@@ -22,6 +22,8 @@
 
 		navBarMenuIconText?: string;
 
+		sideBarToogle?: boolean;
+
 		dropDown?: boolean;
 		dropDownSource?: any[];
 
@@ -49,22 +51,22 @@
 
 		navBarMenuIconText = 'GitHub',
 
+		sideBarToogle = false,
+
 		dropDownSource = []
 	}: navigationBarInterface = $props();
 
 	// Function
 
 	let activeNavMenu = $state('activeNavMenu');
-	
 
-    /* let navbarMenu = document.querySelector('.navbarMenu'); */
-
+	function toggleSideBar() {
+		sideBarToogle = !sideBarToogle;
+	}
 
 	function setActive(selectedNavMenu: string) {
 		activeNavMenu = selectedNavMenu;
 	}
-
-	
 </script>
 
 <main>
@@ -90,12 +92,6 @@
 							class="navItem {activeNavMenu === options ? 'active' : ''}">{options}</a
 						>
 					{/each}
-					<!-- <a
-						href="/"
-						onclick={() => setActive(navBarMenuSource)}
-						class="navItem {activeNavMenu === navBarMenuSource ? 'active' : ''}"
-						>{navBarMenuSource}</a
-					> -->
 				</nav>
 			</div>
 
@@ -137,6 +133,7 @@
 
 				<!-- svelte-ignore a11y_click_events_have_key_events -->
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
+
 				<div class="sideMenuIcon">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -237,7 +234,17 @@
 				}
 
 				& .sideMenuIcon {
+					position: relative;
 					display: none;
+
+					/* &::after {
+						content: 'x';
+						position: absolute;
+						top: 1.5rem;
+						right: 2rem;
+						font-size: 1.5rem;
+						cursor: pointer;
+					} */
 				}
 
 				& .MenuIcon {
@@ -361,30 +368,34 @@
 			}
 
 			& .navbarMenu {
-				display: block;
-			}
+				display: inline-block;
+				position: absolute;
+				display: none;
+				width: 90%;
+				left: 0;
+				text-align: center;
+				overflow: hidden;
 
-			& .navItem {
-				display: block;
-				width: 250px;
-				
-				background-color: rgba(250, 249, 253, 1);
-			text-decoration: none;
-			font-size: 1.1rem;
-			padding: 10px;
-			font-weight: 500;
-			color: rgba(102, 102, 102, 1);
-			background-color: aquamarine;
-			margin: 0 1.25rem;
+				& .navItem {
+					display: inline-block;
+					width: 80%;
+					text-decoration: none;
+					font-size: 1.1rem;
+					padding: 10px;
+					font-weight: 500;
+					margin: 0;
+					color: rgba(102, 102, 102, 1);
 
-			&:hover {
-				background-color: rgba(0, 0, 0, 0.468);
-			}
+					&:hover {
+						background-color: rgba(0, 0, 0, 0.468);
+					}
 
-			&.active {
-				color: rgba(0, 0, 0, 1);
+
+					&.active {
+						color: rgba(0, 0, 0, 1);
+					}
+				}
 			}
-		}
 		}
 	}
 </style>
