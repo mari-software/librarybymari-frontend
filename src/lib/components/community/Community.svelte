@@ -1,0 +1,52 @@
+<script lang="ts">
+	interface blogInterface {
+		// Config
+		blogDataSource: any[];
+	}
+
+	let {
+		//Config
+		blogDataSource = []
+	}: blogInterface = $props();
+</script>
+
+<main>
+	<div class="blog-lineup">
+		{#each blogDataSource as { blogImage, blogHeading, blogText }}
+			<div class="lineup-item">
+				<img src={blogImage} alt="" />
+				<h2>{blogHeading}</h2>
+				<p>{blogText}</p>
+			</div>
+		{/each}
+	</div>
+</main>
+
+<style>
+	main {
+		& .blog-lineup {
+			justify-content: center;
+			display: flex;
+			gap: 3rem;
+
+			& .lineup-item {
+				& img {
+					display: block;
+					margin: 0 auto;
+					align-items: center;
+					aspect-ratio: 1/1;
+					width: 4rem;
+                    cursor: pointer;
+				}
+
+				& h2 {
+					text-align: center;
+				}
+
+				& p {
+					text-align: center;
+				}
+			}
+		}
+	}
+</style>
