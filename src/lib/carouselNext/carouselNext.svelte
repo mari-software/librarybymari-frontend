@@ -49,6 +49,7 @@
 <main>
 	<div class="carousel">
 		<div class="slides" style="transform: translateX({-active * 50}%)">
+
 			{#each carouselDataSource as { image, heading, carouselDataHeaderSource, carouselDataTextSource, index }}
 				<div class="slide" class:active={active === index}>
 					{#if sliderToggle}
@@ -150,8 +151,6 @@
 				display: none;
 			}
 
-			
-			
 			& .slides {
 				display: flex;
 				transition: all 0.5s ease;
@@ -166,17 +165,12 @@
 					overflow: hidden;
 					text-align: center;
 					width: 100%;
-  height: 20rem;
+					height: 20rem;
 					transition: all 0.2s ease-in-out;
 					scroll-snap-align: start;
 
 					&:last-child {
 						scroll-snap-align: end;
-					}
-
-					&.active {
-						transform: scale(1.05);
-						z-index: 100;
 					}
 
 					&:hover {

@@ -7,7 +7,7 @@
 		navBarLogoTextSource: string;
 
 		navBarMenuToggle?: boolean;
-		navBarMenuSource: string;
+		navBarMenuSource: any[];
 
 		navBarSearchToggle?: boolean;
 		navBarSearchSource?: string;
@@ -22,6 +22,9 @@
 
 		navBarMenuIconText?: string;
 
+		dropDown?: boolean;
+		dropDownSource?: any[];
+
 		// Style
 	}
 
@@ -31,7 +34,7 @@
 		navBarLogoTextSource = 'Mari_Gold',
 
 		navBarMenuToggle = undefined,
-		navBarMenuSource = '',
+		navBarMenuSource = [],
 
 		navBarSearchToggle = undefined,
 		navBarSearchSource = '',
@@ -44,7 +47,9 @@
 		NavBarMenuIconToggle = undefined,
 		NavBarMenuIconSource = '',
 
-		navBarMenuIconText = 'GitHub'
+		navBarMenuIconText = 'GitHub',
+
+		dropDownSource = []
 	}: navigationBarInterface = $props();
 
 	// Function
@@ -72,12 +77,15 @@
 				{/if}
 
 				<nav class="navbarMenu">
-					<a
+					{#each navBarMenuSource as {options, link} }
+						<a href={link} onclick={() => setActive(options)} class="navItem {activeNavMenu === options ? 'active' : ''}">{options}</a>
+					{/each}
+					<!-- <a
 						href="/"
 						onclick={() => setActive(navBarMenuSource)}
 						class="navItem {activeNavMenu === navBarMenuSource ? 'active' : ''}"
 						>{navBarMenuSource}</a
-					>
+					> -->
 				</nav>
 			</div>
 
@@ -88,12 +96,11 @@
 						<label for="combo-box">Version</label>
 
 						<div class="dropdown-content">
+							{#each dropDownSource as { options, link }} 
 							<ul>
-								<li>option 1</li>
-								<li>option 2</li>
-								<li>option 3</li>
-								<li>option 4</li>
+								<li><a href={link}>{options}</a></li>
 							</ul>
+							{/each}
 						</div>
 					</div>
 				{/if}
@@ -208,19 +215,6 @@
 				& .MenuIcon {
 					height: 2rem;
 					cursor: pointer;
-
-					/* width: 3rem;
-					margin-right: 1rem;
-					border-radius: 50%;
-					box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.5);
-					transition:
-						transform 0.2s ease,
-						box-shadow 0.2s ease;
-
-					&:active {
-						transform: translateY(0.125rem);
-						box-shadow: 0.0625rem 0.0625rem 0.3125rem rgba(0, 0, 0, 0.3);
-					} */
 				}
 
 				& p {
@@ -282,6 +276,12 @@
 								&:hover {
 									background-color: #f1f1f1;
 								}
+
+								a {
+									text-decoration: none;
+									color: black;
+									font-size: 1rem;
+								}
 							}
 						}
 					}
@@ -312,4 +312,30 @@
 			}
 		}
 	}
+
+	@media (max-width: 768px) {
+  main {
+	  & .headerNav {
+		  & .headerMenu {
+
+			
+			  
+			& p {
+				display: none;
+			}
+
+			& .dropDown {
+				display: none;
+			}
+
+			
+		}
+	  }
+
+	  & .navbarMenu {
+		  display: none;
+	  }
+}
+	}
+
 </style>

@@ -1,4 +1,7 @@
 <script lang="ts">
+	import SVG from './46076 1.svg';
+
+
 	interface FooterBarInterface {
 		// Config
 		navBarLogoSource: string;
@@ -32,8 +35,9 @@
 			<div class="footerContact">
 				<p>{footerContactText}</p>
 				<div class="footerEmail">
-					<input type="email" placeholder="Email address" class="footerEmailInput" />
-					<button type="submit" class="footerEmailButton">✈</button>
+					<input type="email" placeholder="" class="footerEmailInput" />
+					<!-- <div type="submit" class="footerEmailButton">✈</div> -->
+					<div class="footerEmailButton"><img src={SVG} alt=""></div>
 				</div>
 			</div>
 		</div>
@@ -70,9 +74,8 @@
 				& .footerCopyrightText {
 					margin-left: 1rem;
 					color: var(--white-500);
-					text-align: left;
 					flex-basis: 100%;
-					order: 3;
+					order: 2;
 				}
 
 				& .footerContact {
@@ -80,7 +83,7 @@
 					justify-content: center;
 					margin-right: 20px;
 					text-align: right;
-					margin-top: 14px;
+					/* margin-top: 14px; */
 
 					& p {
 						color: var(--black-700);
@@ -103,7 +106,7 @@
 							padding: 0.5rem;
 							border: none;
 							border-radius: 5px;
-							box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.5);
+							filter: drop-shadow(0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.5));
 							cursor: pointer;
 							transition:
 								transform 0.2s ease,
@@ -111,7 +114,7 @@
 
 							&:active {
 								transform: translateY(0.125rem);
-								box-shadow: 0.0625rem 0.0625rem 0.3125rem rgba(0, 0, 0, 0.3);
+								filter: drop-shadow(0.0625rem 0.0625rem 0.3125rem rgba(0, 0, 0, 0.3));
 							}
 						}
 					}

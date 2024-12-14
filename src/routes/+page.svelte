@@ -1,6 +1,6 @@
 <script>
 	import CarouselNext from '$lib/carouselNext/carouselNext.svelte';
-	import Blog from '$lib/components/blog/Blog.svelte';
+	import Community from '$lib/components/community/Community.svelte';
 	import Carousel from '$lib/components/carousel/Carousel.svelte';
 	import Entrance from '$lib/components/entrance/Entrance.svelte';
 	import Footer from '$lib/components/footer/Footer.svelte';
@@ -11,13 +11,30 @@
 	navBarLogoTextSource="Mari_Gold"
 	navBarLogoSource="https://i.pinimg.com/736x/9a/97/4f/9a974f42aff13171296fbc5ed59ece40.jpg"
 	navBarMenuToggle={true}
-	navBarMenuSource="Dashboard"
-	navBarSearchToggle={true}
+
+	navBarMenuSource={[
+		{ options: 'Home', link: '/' },
+		{ options: 'Components', link: '/' },
+		{ options: 'CDK', link: '/' },
+		{ options: 'Guides', link: '/' },
+		{ options: 'Donate Us', link: '/' }
+	]}
+
+
+
+	navBarSearchToggle={false}
 	navBarSearchSource="🔍 What's on your mind?"
 	NavBarMenuButtonToggle={false}
 	NavBarMenuButtonSource="Create"
 	NavBarMenuIconToggle={true}
 	NavBarMenuIconSource="https://banner2.cleanpng.com/20180617/uzy/kisspng-gitlab-github-continuous-integration-computer-icon-5b25ebd5d3e583.5178856115292118618679.jpg"
+
+	dropDownSource = {[
+		{ options: 'option-1', link: '/' },
+		{ options: 'option-2', link: '/' },
+		{ options: 'option-3', link: '/' },
+		{ options: 'option-4', link: '/' }
+	]}
 />
 
 <Entrance
@@ -31,7 +48,7 @@
 
 <!-- Carousel-1 -->
 
-<CarouselNext
+<!-- <CarouselNext
 	carouselDataSource={[
 		{
 			image:
@@ -70,7 +87,7 @@
 	sliderHeading={true}
 	active={0}
 	itemLength={2}
-/>
+/> -->
 
 <hr />
 
@@ -105,7 +122,7 @@
 />
 <hr />
 
-<Blog 
+<Community 
 	blogDataSource={[
 		{
 			blogImage: 'https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-06-512.png',
