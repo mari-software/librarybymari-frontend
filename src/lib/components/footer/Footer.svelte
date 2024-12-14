@@ -47,7 +47,7 @@
 <style>
 	section {
 		& footer {
-			padding: 0.625rem 0;
+			/* padding: 0.625rem 0; */
 			width: 100%;
 
 			& .footerBar {
@@ -81,7 +81,7 @@
 				& .footerContact {
 					align-items: center;
 					justify-content: center;
-					margin-right: 20px;
+					margin-right: 1.25rem;
 					text-align: right;
 					/* margin-top: 14px; */
 
@@ -97,7 +97,7 @@
 						& .footerEmailInput {
 							padding: 0.5rem;
 							border: none;
-							border-radius: 5px;
+							border-radius: 0.3125rem;
 							box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.5);
 							margin-right: 0.5rem;
 						}
@@ -105,7 +105,7 @@
 						& .footerEmailButton {
 							padding: 0.5rem;
 							border: none;
-							border-radius: 5px;
+							border-radius: 0.3125rem;
 							filter: drop-shadow(0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.5));
 							cursor: pointer;
 							transition:

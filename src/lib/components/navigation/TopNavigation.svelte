@@ -55,10 +55,16 @@
 	// Function
 
 	let activeNavMenu = $state('activeNavMenu');
+	
+
+    /* let navbarMenu = document.querySelector('.navbarMenu'); */
+
 
 	function setActive(selectedNavMenu: string) {
 		activeNavMenu = selectedNavMenu;
 	}
+
+	
 </script>
 
 <main>
@@ -77,8 +83,12 @@
 				{/if}
 
 				<nav class="navbarMenu">
-					{#each navBarMenuSource as {options, link} }
-						<a href={link} onclick={() => setActive(options)} class="navItem {activeNavMenu === options ? 'active' : ''}">{options}</a>
+					{#each navBarMenuSource as { options, link }}
+						<a
+							href={link}
+							onclick={() => setActive(options)}
+							class="navItem {activeNavMenu === options ? 'active' : ''}">{options}</a
+						>
 					{/each}
 					<!-- <a
 						href="/"
@@ -96,10 +106,10 @@
 						<label for="combo-box">Version</label>
 
 						<div class="dropdown-content">
-							{#each dropDownSource as { options, link }} 
-							<ul>
-								<li><a href={link}>{options}</a></li>
-							</ul>
+							{#each dropDownSource as { options, link }}
+								<ul>
+									<li><a href={link}>{options}</a></li>
+								</ul>
 							{/each}
 						</div>
 					</div>
@@ -124,6 +134,20 @@
 						{NavBarMenuButtonSource}
 					</button>
 				{/if}
+
+				<!-- svelte-ignore a11y_click_events_have_key_events -->
+				<!-- svelte-ignore a11y_no_static_element_interactions -->
+				<div class="sideMenuIcon">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						height="24px"
+						viewBox="0 -960 960 960"
+						width="24px"
+						fill="black"
+						><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg
+					>
+				</div>
+
 				{#if NavBarMenuIconToggle}
 					<img src={NavBarMenuIconSource} alt="" class="MenuIcon" />
 				{/if}
@@ -210,6 +234,10 @@
 					& span {
 						margin-right: 0.5rem;
 					}
+				}
+
+				& .sideMenuIcon {
+					display: none;
 				}
 
 				& .MenuIcon {
@@ -314,28 +342,49 @@
 	}
 
 	@media (max-width: 768px) {
-  main {
-	  & .headerNav {
-		  & .headerMenu {
+		main {
+			& .headerNav {
+				& .headerMenu {
+					& .sideMenuIcon {
+						display: block;
+						cursor: pointer;
+					}
 
-			
-			  
-			& p {
-				display: none;
+					& p {
+						display: none;
+					}
+
+					& .dropDown {
+						display: none;
+					}
+				}
 			}
 
-			& .dropDown {
-				display: none;
+			& .navbarMenu {
+				display: block;
 			}
 
-			
+			& .navItem {
+				display: block;
+				width: 250px;
+				
+				background-color: rgba(250, 249, 253, 1);
+			text-decoration: none;
+			font-size: 1.1rem;
+			padding: 10px;
+			font-weight: 500;
+			color: rgba(102, 102, 102, 1);
+			background-color: aquamarine;
+			margin: 0 1.25rem;
+
+			&:hover {
+				background-color: rgba(0, 0, 0, 0.468);
+			}
+
+			&.active {
+				color: rgba(0, 0, 0, 1);
+			}
 		}
-	  }
-
-	  & .navbarMenu {
-		  display: none;
-	  }
-}
+		}
 	}
-
 </style>

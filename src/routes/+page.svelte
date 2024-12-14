@@ -130,14 +130,14 @@
 			blogText: 'Visit our YouTube channel to see latest tutorials'
 		},
 		{
-			blogImage: 'https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-06-512.png',
-			blogHeading: 'YouTube',
-			blogText: 'Visit our YouTube channel to see latest tutorials'
+			blogImage: 'https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png',
+			blogHeading: 'Discord',
+			blogText: 'Join our Discord serve to become a part of community'
 		},
 		{
-			blogImage: 'https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-06-512.png',
-			blogHeading: 'YouTube',
-			blogText: 'Visit our YouTube channel to see latest tutorials'
+			blogImage: 'https://i.pinimg.com/736x/9a/97/4f/9a974f42aff13171296fbc5ed59ece40.jpg',
+			blogHeading: 'Blogs',
+			blogText: 'News and Tips from Mari Team'
 		},
 	]}
 />
