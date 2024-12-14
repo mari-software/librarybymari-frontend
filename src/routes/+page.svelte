@@ -14,7 +14,7 @@
 	navBarMenuSource="Dashboard"
 	navBarSearchToggle={true}
 	navBarSearchSource="🔍 What's on your mind?"
-	NavBarMenuButtonToggle={true}
+	NavBarMenuButtonToggle={false}
 	NavBarMenuButtonSource="Create"
 	NavBarMenuIconToggle={true}
 	NavBarMenuIconSource="https://banner2.cleanpng.com/20180617/uzy/kisspng-gitlab-github-continuous-integration-computer-icon-5b25ebd5d3e583.5178856115292118618679.jpg"
@@ -69,7 +69,7 @@
 	sliderText={true}
 	sliderHeading={true}
 	active={0}
-	itemLength={1}
+	itemLength={2}
 />
 
 <hr />

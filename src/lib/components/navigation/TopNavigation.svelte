@@ -1,5 +1,5 @@
 <script lang="ts">
-/* 	import '../Global.css'; */
+	/* 	import '../Global.css'; */
 
 	interface navigationBarInterface {
 		// Config
@@ -36,7 +36,7 @@
 		navBarSearchToggle = undefined,
 		navBarSearchSource = '',
 
-		navBarHeaderDropDown = undefined,
+		navBarHeaderDropDown = true,
 
 		NavBarMenuButtonToggle = undefined,
 		NavBarMenuButtonSource = '',
@@ -44,16 +44,12 @@
 		NavBarMenuIconToggle = undefined,
 		NavBarMenuIconSource = '',
 
-		navBarMenuIconText = 'GitHub',
-
+		navBarMenuIconText = 'GitHub'
 	}: navigationBarInterface = $props();
 
 	// Function
 
 	let activeNavMenu = $state('activeNavMenu');
-	let isDropdownOpen = $state(false);
-
-	
 
 	function setActive(selectedNavMenu: string) {
 		activeNavMenu = selectedNavMenu;
@@ -76,25 +72,31 @@
 				{/if}
 
 				<nav class="navbarMenu">
-					<a href="/" onclick={() => setActive(navBarMenuSource)} class="navItem {activeNavMenu === navBarMenuSource ? 'active' : ''}"
+					<a
+						href="/"
+						onclick={() => setActive(navBarMenuSource)}
+						class="navItem {activeNavMenu === navBarMenuSource ? 'active' : ''}"
 						>{navBarMenuSource}</a
 					>
 				</nav>
 			</div>
 
 			<div class="headerMenu">
+				{#if navBarHeaderDropDown}
+					<div class="dropDown">
+						<input type="checkbox" class="combo-box" id="combo-box" />
+						<label for="combo-box">Version</label>
 
-				<!-- {#if navBarHeaderDropDown}
-				<div class="dropDown">
-					<button class="combo-box-button" onclick={toggleDropdown()}>Version</button>
-					<div class="combo-box-content" id="dropdown">
-						<a href="/">Option-1</a>
-						<a href="/">Option-2</a>
-						<a href="/">Option-3</a>
-						<a href="/">Option-4</a>
+						<div class="dropdown-content">
+							<ul>
+								<li>option 1</li>
+								<li>option 2</li>
+								<li>option 3</li>
+								<li>option 4</li>
+							</ul>
+						</div>
 					</div>
-				</div>
-				{/if} -->
+				{/if}
 
 				{#if NavBarMenuButtonToggle}
 					<button class="headerMenuButton">
@@ -122,7 +124,6 @@
 			</div>
 		{/if}
 	</header>
-
 </main>
 
 <style>
@@ -207,7 +208,7 @@
 				& .MenuIcon {
 					height: 2rem;
 					cursor: pointer;
-					
+
 					/* width: 3rem;
 					margin-right: 1rem;
 					border-radius: 50%;
@@ -227,6 +228,67 @@
 					font-weight: bold;
 					cursor: pointer;
 					margin-right: 1rem;
+				}
+
+				.dropDown {
+					position: relative;
+					display: inline-block;
+
+					#combo-box {
+						display: none;
+					}
+
+					label {
+						color: black;
+						padding: 0.625rem 1.25rem;
+						font-size: 1rem;
+						cursor: pointer;
+						display: inline-block;
+
+						&::before {
+							content: '∇';
+							display: inline-block;
+							font-weight: 900;
+							font-size: larger;
+							margin-right: 0.5rem;
+							transform: rotate(-90deg);
+							transition: transform 0.2s ease;
+						}
+					}
+					#combo-box:checked + label::before {
+						transform: rotate(0deg);
+					}
+
+					.dropdown-content {
+						display: none;
+						position: absolute;
+						background-color: #f9f9f9;
+						min-width: 10rem;
+						box-shadow: 0rem 0.5rem 1rem 0rem rgba(0, 0, 0, 0.2);
+
+						z-index: 1;
+						overflow-y: scroll;
+						max-height: 8.5rem;
+
+						ul {
+							list-style: none;
+							padding: 0;
+							margin: 0;
+
+							li {
+								padding: 0.75rem 1rem;
+								cursor: pointer;
+
+								&:hover {
+									background-color: #f1f1f1;
+								}
+							}
+						}
+					}
+
+					#combo-box:checked + label + .dropdown-content {
+						display: block;
+					}
 				}
 			}
 		}
@@ -248,5 +310,6 @@
 			&.active {
 				color: rgba(0, 0, 0, 1);
 			}
-		}}
-        </style>
+		}
+	}
+</style>

@@ -48,7 +48,7 @@
 
 <main>
 	<div class="carousel">
-		<div class="slides" style="transform: translateX(-{active * 100}%)">
+		<div class="slides" style="transform: translateX({-active * 50}%)">
 			{#each carouselDataSource as { image, heading, carouselDataHeaderSource, carouselDataTextSource, index }}
 				<div class="slide" class:active={active === index}>
 					{#if sliderToggle}
@@ -138,11 +138,20 @@
 <style>
 	main {
 		& .carousel {
+			overflow-x: scroll;
 			position: relative;
 			width: 100%;
 			height: 20rem;
-			overflow: hidden;
+			overflow-y: hidden;
+			scroll-behavior: smooth;
+			scroll-snap-type: x mandatory;
 
+			&::-webkit-scrollbar {
+				display: none;
+			}
+
+			
+			
 			& .slides {
 				display: flex;
 				transition: all 0.5s ease;
@@ -156,15 +165,22 @@
 					padding: 1.25rem;
 					overflow: hidden;
 					text-align: center;
+					width: 100%;
+  height: 20rem;
 					transition: all 0.2s ease-in-out;
+					scroll-snap-align: start;
+
+					&:last-child {
+						scroll-snap-align: end;
+					}
 
 					&.active {
-						scale: 1.05;
+						transform: scale(1.05);
 						z-index: 100;
 					}
 
 					&:hover {
-						scale: 1.05;
+						transform: scale(1.05);
 					}
 
 					& img {
@@ -179,11 +195,11 @@
 		& .next {
 			position: absolute;
 			top: 50%;
-			font-size: 2.5rem;
 			border: none;
 			border-radius: 50%;
 			cursor: pointer;
-			/* transform: translateY(-50%); */
+			/* z-index: 99; */
+			transform: translateY(-50%);
 			transition: all 0.2s ease-in-out;
 		}
 
@@ -193,7 +209,7 @@
 
 		& .next {
 			right: 1.875rem;
-			rotate: 180deg;
+			transform: translateY(-50%) rotate(180deg);
 		}
 
 		/* 	& .previous:hover,
