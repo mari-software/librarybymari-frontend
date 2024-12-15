@@ -24,51 +24,44 @@
 		sliderToggle = true,
 		sliderImage = false,
 		sliderTextToggle = true,
-		sliderHeading = true,
+		sliderHeading = true
 
 		// Function
 	}: carouselInterface = $props();
-	
+
 	let active = $state(0);
 	let itemLength = carouselDataSource.length;
 	// Funtion
 
-	/* function setActive(index: number) {
-		active = index;
-	} */
-
-/* 	const nextSlide = () => {
-		active = active + 1 > itemLength ? 0 : active + 1;
+	const nextSlide = () => {
+		active = (active + 1) % itemLength;
 	};
 
 	const prevSlide = () => {
-		active = active - 1 < 0 ? itemLength - 1 : active - 1;
-	}; */
-
-	const nextSlide = () => {
-  active = (active + 1) % itemLength; 
-};
-
-const prevSlide = () => {
-  active = (active - 1 + itemLength) % itemLength; 
-};
+		active = (active - 1 + itemLength) % itemLength;
+	};
 </script>
 
 <main>
 	<div class="carousel">
-		<div class="slides" >
-
+		<div class="slides">
 			{#each carouselDataSource as { image, heading, carouselDataHeaderSource, carouselDataTextSource, index, link }}
-				<div class="slide" style="transform: translateX({-active * 50}%)" class:active={active === index}>
+				<div
+					class="slide"
+					style="transform: translateX({-active * 50}%)"
+					class:active={active === index}
+				>
 					{#if sliderToggle}
-						<a href={link}><div class="slideText">
-							{#if sliderHeading}
-								<h2>{carouselDataHeaderSource}</h2>
-							{/if}
-							{#if sliderTextToggle}
-								<p>{carouselDataTextSource}</p>
-							{/if}
-						</div></a>
+						<a href={link}
+							><div class="slideText">
+								{#if sliderHeading}
+									<h2>{carouselDataHeaderSource}</h2>
+								{/if}
+								{#if sliderTextToggle}
+									<p>{carouselDataTextSource}</p>
+								{/if}
+							</div></a
+						>
 					{/if}
 
 					{#if sliderImage}
@@ -106,7 +99,6 @@ const prevSlide = () => {
 				</defs>
 			</svg>
 		</div>
-
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<div class="next" onclick={nextSlide}>
@@ -141,44 +133,50 @@ const prevSlide = () => {
 <style>
 	main {
 		& .carousel {
+			z-index: -110;
+			display: flex;
 			position: relative;
+			justify-content: center;
+			align-items: center;
 			width: 100%;
-			height: 20rem;
-			
+			height: 100%;
+
 			& .slides {
-				overflow-x: scroll;
-				scroll-behavior: smooth;
 				display: flex;
-				transition: all 0.5s ease;
-				/* overflow-y: hidden; */
-				
-				&::-webkit-scrollbar {
-					display: none;
-				}
+				overflow-x: scroll;
+				overflow-y: hidden;
+				scroll-snap-type: x mandatory;
+				scroll-behavior: smooth;
+				scrollbar-width: none;
 
 				& .slide {
+					border: 1px solid black;
+					border-radius: 25px;
 					min-width: 33%;
 					box-sizing: border-box;
-					padding-left: 2rem;
+					padding: 0;
 					overflow: hidden;
 					text-align: center;
-					width: 100%;
-					height: 20rem;
-					transition: all 0.2s ease-in-out;
+					width: 21.875rem;
+					height: 15.625rem;
 					cursor: pointer;
+					margin-right: 1rem;
+					cursor: pointer;
+					transition: all 0.2s ease;
+
+					&:hover {
+						scale: 1.1;
+					}
 
 					& a {
 						text-decoration: none;
 						color: black;
 					}
 
-					&:hover {
-						transform: scale(1.1);
-					}
-
 					& img {
-						aspect-ratio: 1/4;
-						border-radius: 0.5rem;
+						width: auto;
+						height: 50%;
+						overflow: hidden;
 					}
 				}
 			}
@@ -203,6 +201,20 @@ const prevSlide = () => {
 			right: 1.875rem;
 			transform: translateY(-50%) rotate(180deg);
 		}
+	}
 
+	@media screen and (max-width: 768px) {
+		main {
+			& .carousel {
+				& .slides {
+					& .slide {
+						min-width: 100%;
+						width: 10rem;
+						height: 15rem;
+						transition: all 0.2s ease;
+					}
+				}
+			}
+		}
 	}
 </style>
