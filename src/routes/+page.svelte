@@ -44,38 +44,75 @@
 
 <!-- Carousel-1 -->
 
+<!-- <CarouselNext
+	carouselDataSource={[]}
+	carouselDataTextSource=""
+	carouselDataHeaderSource=""
+	sliderToggle={true}
+	sliderImage={false}
+	sliderTextToggle={true}
+	sliderHeading={false}
+	active={0}
+	itemLength={3}
+/> -->
+
+<hr />
+
+
+<!-- Carousel-2 -->
+
+<!-- <CarouselNext
+	carouselDataSource={[]}
+	carouselDataTextSource=""
+	carouselDataHeaderSource=""
+	sliderToggle={true}
+	sliderImage={false}
+	sliderTextToggle={true}
+	sliderHeading={false}
+	active={0}
+	itemLength={3}
+/>
+
+<hr /> -->
+
+<!--  Carousel-3 -->
+
 <CarouselNext 
+	carouselOptionMenu="Blog"
+	carouselMoreMenu="View more blogs"
+	carouselMoreMenuLink="/"
+
 carouselDataSource={[
 	{
 		image:
-			'https://steamuserimages-a.akamaihd.net/ugc/2486634816019385799/42EAD597D63146529E43BAE1425E25FA5E39A9D3/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true',
-		heading: 'Slide 1',
-		carouselDataHeaderSource: 'Header for Slide 1',
-		carouselDataTextSource: 'Description for Slide 1',
+			'https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-06-512.png',
+		heading: 'Get Started',
+		carouselDataHeaderSource: 'Get Started',
+		carouselDataTextSource: 'Add Mari_Gold materials to your projects.',
 		link: '/'
 	},
 	{
 		image:
-			'https://static.animecorner.me/2024/09/1726468888-2731cfe1c0a510ad6809ed6cb3af3bcd.png',
-		heading: 'Slide 1',
-		carouselDataHeaderSource: 'Header for Slide 1',
-		carouselDataTextSource: 'Description for Slide 1',
+			'https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-06-512.png',
+		heading: 'Slide 2',
+		carouselDataHeaderSource: 'Get Started',
+		carouselDataTextSource: 'Add Mari_Gold materials to your projects.',
 		link: '/'
 	},
 	{
 		image:
-			'https://i.ytimg.com/vi/A2x5q69sZNw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDl2AQfF3dzcAR-7L5YqhpGJpQW8w',
-		heading: 'Slide 1',
-		carouselDataHeaderSource: 'Header for Slide 1',
-		carouselDataTextSource: 'Description for Slide 1',
+			'https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-06-512.png',
+		heading: 'Slide 3',
+		carouselDataHeaderSource: 'Get Started',
+		carouselDataTextSource: 'Add Mari_Gold materials to your projects.',
 		link: '/'
 	},
 	{
 		image:
-			'https://admin.esports.gg/wp-content/uploads/2024/11/Genshin-Impact-drip-marketing-Citlali-reveal-968x544.jpg',
-		heading: 'Slide 1',
-		carouselDataHeaderSource: 'Header for Slide 1',
-		carouselDataTextSource: 'Description for Slide 1',
+			'https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-06-512.png',
+		heading: 'Slide 4',
+		carouselDataHeaderSource: 'Get Started',
+		carouselDataTextSource: 'Add Mari_Gold materials to your projects.',
 		link: '/'
 	}
 ]}
@@ -91,36 +128,6 @@ itemLength={2}
 
 <hr />
 
-<!-- Carousel-2 -->
-
-<CarouselNext
-	carouselDataSource={[]}
-	carouselDataTextSource=""
-	carouselDataHeaderSource=""
-	sliderToggle={true}
-	sliderImage={false}
-	sliderTextToggle={true}
-	sliderHeading={false}
-	active={0}
-	itemLength={3}
-/>
-
-<hr />
-
-<!--  Carousel-3 -->
-
-<CarouselNext
-	carouselDataSource={[]}
-	carouselDataTextSource=""
-	carouselDataHeaderSource=""
-	sliderToggle={true}
-	sliderImage={true}
-	sliderTextToggle={true}
-	sliderHeading={true}
-	active={0}
-	itemLength={3}
-/>
-<hr />
 
 <Community 
 	blogDataSource={[

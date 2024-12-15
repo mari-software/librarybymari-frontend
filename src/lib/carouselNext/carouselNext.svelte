@@ -1,6 +1,11 @@
 <script lang="ts">
 	interface carouselInterface {
 		// Config
+
+		carouselOptionMenu: string;
+		carouselMoreMenu: string;
+		carouselMoreMenuLink: string;
+
 		carouselDataSource: any[];
 		carouselDataTextSource?: string;
 		carouselDataHeaderSource?: string;
@@ -8,7 +13,7 @@
 		sliderToggle?: boolean;
 		sliderImage?: boolean;
 		sliderTextToggle?: boolean;
-		sliderHeading?: boolean;
+		sliderHeading?: boolean; 
 
 		// Style
 
@@ -19,10 +24,15 @@
 
 	let {
 		//Config
+
+		carouselOptionMenu = '',
+		carouselMoreMenu = '',
+		carouselMoreMenuLink = '',
+
 		carouselDataSource = [],
 
 		sliderToggle = true,
-		sliderImage = false,
+		sliderImage = true,
 		sliderTextToggle = true,
 		sliderHeading = true
 
@@ -32,17 +42,23 @@
 	let active = $state(0);
 	let itemLength = carouselDataSource.length;
 	// Funtion
-
 	const nextSlide = () => {
-		active = (active + 1) % itemLength;
+		active = active + 1 > itemLength ? 0 : active + 1;
 	};
 
 	const prevSlide = () => {
-		active = (active - 1 + itemLength) % itemLength;
+		active = active - 1 < 0 ? itemLength : active - 1;
 	};
 </script>
 
 <main>
+	<div class="carouselMenu">
+		<h1>{carouselOptionMenu}</h1>
+		<a href={carouselMoreMenuLink}><p>{carouselMoreMenu} <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M10.9754 8.16189C11.3415 7.7958 11.3415 7.20127 10.9754 6.83518L5.35149 1.21207C4.98535 0.845978 4.39074 0.845978 4.0246 1.21207C3.65847 1.57815 3.65847 2.17268 4.0246 2.53877L8.98653 7.5L4.02753 12.4612C3.66139 12.8273 3.66139 13.4218 4.02753 13.7879C4.39367 14.154 4.98828 14.154 5.35442 13.7879L10.9783 8.16482L10.9754 8.16189Z" fill="black"/>
+			</svg>
+			 </p></a>
+	</div>
 	<div class="carousel">
 		<div class="slides">
 			{#each carouselDataSource as { image, heading, carouselDataHeaderSource, carouselDataTextSource, index, link }}
@@ -51,6 +67,10 @@
 					style="transform: translateX({-active * 50}%)"
 					class:active={active === index}
 				>
+
+				{#if sliderImage}
+						<img src={image} alt={heading} />
+					{/if}
 					{#if sliderToggle}
 						<a href={link}
 							><div class="slideText">
@@ -64,9 +84,7 @@
 						>
 					{/if}
 
-					{#if sliderImage}
-						<img src={image} alt={heading} />
-					{/if}
+					
 				</div>
 			{/each}
 		</div>
@@ -132,14 +150,42 @@
 
 <style>
 	main {
+
+		& .carouselMenu {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 1rem;
+
+			& h1 {
+				margin-left: 2rem;
+			}
+
+		
+				& a {
+					text-decoration: none;
+					color: black;
+	
+
+					p {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						margin-right: 1.5rem;
+
+						& svg {
+							margin-left: 0.7rem;
+						}
+					}
+			}
+		}
+
 		& .carousel {
-			z-index: -110;
 			display: flex;
 			position: relative;
 			justify-content: center;
 			align-items: center;
-			width: 100%;
-			height: 100%;
+			/* width: 100%;
+			height: 100%; */
 
 			& .slides {
 				display: flex;
@@ -150,22 +196,25 @@
 				scrollbar-width: none;
 
 				& .slide {
-					border: 1px solid black;
+					border: 1px solid rgba(0, 0, 0, 0.5);
 					border-radius: 25px;
 					min-width: 33%;
 					box-sizing: border-box;
-					padding: 0;
 					overflow: hidden;
 					text-align: center;
-					width: 21.875rem;
-					height: 15.625rem;
+					width: 15rem;
+					height: 15rem;
 					cursor: pointer;
-					margin-right: 1rem;
+					margin-right: 2rem;
 					cursor: pointer;
-					transition: all 0.2s ease;
+					transition: all 0.2s ease-in-out;
 
 					&:hover {
 						scale: 1.1;
+					}
+
+					&:active {
+						scale: 0.99;
 					}
 
 					& a {
@@ -174,8 +223,9 @@
 					}
 
 					& img {
-						width: auto;
-						height: 50%;
+						margin-top: 1.75rem;
+						width: 5rem;
+						height: 5rem;
 						overflow: hidden;
 					}
 				}
@@ -211,7 +261,6 @@
 						min-width: 100%;
 						width: 10rem;
 						height: 15rem;
-						transition: all 0.2s ease;
 					}
 				}
 			}
