@@ -27,31 +27,39 @@
 		sliderHeading = true,
 
 		// Function
-		itemLength = carouselDataSource.length,
-		active = 0
 	}: carouselInterface = $props();
-
+	
+	let active = $state(0);
+	let itemLength = carouselDataSource.length;
 	// Funtion
 
 	/* function setActive(index: number) {
 		active = index;
 	} */
 
-	const nextSlide = () => {
+/* 	const nextSlide = () => {
 		active = active + 1 > itemLength ? 0 : active + 1;
 	};
 
 	const prevSlide = () => {
 		active = active - 1 < 0 ? itemLength - 1 : active - 1;
-	};
+	}; */
+
+	const nextSlide = () => {
+  active = (active + 1) % itemLength; 
+};
+
+const prevSlide = () => {
+  active = (active - 1 + itemLength) % itemLength; 
+};
 </script>
 
 <main>
 	<div class="carousel">
-		<div class="slides" style="transform: translateX({-active * 50}%)">
+		<div class="slides" >
 
 			{#each carouselDataSource as { image, heading, carouselDataHeaderSource, carouselDataTextSource, index, link }}
-				<div class="slide" class:active={active === index}>
+				<div class="slide" style="transform: translateX({-active * 50}%)" class:active={active === index}>
 					{#if sliderToggle}
 						<a href={link}><div class="slideText">
 							{#if sliderHeading}
@@ -133,41 +141,35 @@
 <style>
 	main {
 		& .carousel {
-			overflow-x: scroll;
 			position: relative;
 			width: 100%;
 			height: 20rem;
-			overflow-y: hidden;
-			scroll-behavior: smooth;
-			scroll-snap-type: x mandatory;
-
-			&::-webkit-scrollbar {
-				display: none;
-			}
-
+			
 			& .slides {
+				overflow-x: scroll;
+				scroll-behavior: smooth;
 				display: flex;
 				transition: all 0.5s ease;
+				/* overflow-y: hidden; */
+				
+				&::-webkit-scrollbar {
+					display: none;
+				}
 
 				& .slide {
-					display: inline-block;
-					min-width: 50%;
+					min-width: 33%;
 					box-sizing: border-box;
-					padding: 1.25rem;
+					padding-left: 2rem;
 					overflow: hidden;
 					text-align: center;
 					width: 100%;
 					height: 20rem;
 					transition: all 0.2s ease-in-out;
-					scroll-snap-align: start;
+					cursor: pointer;
 
 					& a {
 						text-decoration: none;
 						color: black;
-					}
-
-					&:last-child {
-						scroll-snap-align: end;
 					}
 
 					&:hover {
@@ -175,7 +177,7 @@
 					}
 
 					& img {
-						aspect-ratio: 1/1;
+						aspect-ratio: 1/4;
 						border-radius: 0.5rem;
 					}
 				}

@@ -21,11 +21,7 @@
 	]}
 
 
-
-	navBarSearchToggle={false}
-	navBarSearchSource="🔍 What's on your mind?"
-	NavBarMenuButtonToggle={false}
-	NavBarMenuButtonSource="Create"
+	navBarHeaderDropDown={true}
 	NavBarMenuIconToggle={true}
 	NavBarMenuIconSource="https://banner2.cleanpng.com/20180617/uzy/kisspng-gitlab-github-continuous-integration-computer-icon-5b25ebd5d3e583.5178856115292118618679.jpg"
 
