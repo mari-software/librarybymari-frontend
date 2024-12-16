@@ -13,7 +13,7 @@
 		sliderToggle?: boolean;
 		sliderImage?: boolean;
 		sliderTextToggle?: boolean;
-		sliderHeading?: boolean; 
+		sliderHeading?: boolean;
 
 		// Style
 
@@ -54,10 +54,23 @@
 <main>
 	<div class="carouselMenu">
 		<h1>{carouselOptionMenu}</h1>
-		<a href={carouselMoreMenuLink}><p>{carouselMoreMenu} <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path d="M10.9754 8.16189C11.3415 7.7958 11.3415 7.20127 10.9754 6.83518L5.35149 1.21207C4.98535 0.845978 4.39074 0.845978 4.0246 1.21207C3.65847 1.57815 3.65847 2.17268 4.0246 2.53877L8.98653 7.5L4.02753 12.4612C3.66139 12.8273 3.66139 13.4218 4.02753 13.7879C4.39367 14.154 4.98828 14.154 5.35442 13.7879L10.9783 8.16482L10.9754 8.16189Z" fill="black"/>
-			</svg>
-			 </p></a>
+		<a href={carouselMoreMenuLink}
+			><p>
+				{carouselMoreMenu}
+				<svg
+					width="15"
+					height="15"
+					viewBox="0 0 15 15"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M10.9754 8.16189C11.3415 7.7958 11.3415 7.20127 10.9754 6.83518L5.35149 1.21207C4.98535 0.845978 4.39074 0.845978 4.0246 1.21207C3.65847 1.57815 3.65847 2.17268 4.0246 2.53877L8.98653 7.5L4.02753 12.4612C3.66139 12.8273 3.66139 13.4218 4.02753 13.7879C4.39367 14.154 4.98828 14.154 5.35442 13.7879L10.9783 8.16482L10.9754 8.16189Z"
+						fill="black"
+					/>
+				</svg>
+			</p></a
+		>
 	</div>
 	<div class="carousel">
 		<div class="slides">
@@ -67,8 +80,7 @@
 					style="transform: translateX({-active * 50}%)"
 					class:active={active === index}
 				>
-
-				{#if sliderImage}
+					{#if sliderImage}
 						<img src={image} alt={heading} />
 					{/if}
 					{#if sliderToggle}
@@ -83,8 +95,6 @@
 							</div></a
 						>
 					{/if}
-
-					
 				</div>
 			{/each}
 		</div>
@@ -150,7 +160,6 @@
 
 <style>
 	main {
-
 		& .carouselMenu {
 			display: flex;
 			justify-content: space-between;
@@ -160,22 +169,25 @@
 				margin-left: 2rem;
 			}
 
-		
-				& a {
-					text-decoration: none;
-					color: black;
-	
+			& a {
+				text-decoration: none;
+				color: var(--black-900);
+				transition: text-decoration 0.2s ease-in-out;
 
-					p {
-						display: flex;
-						justify-content: center;
-						align-items: center;
-						margin-right: 1.5rem;
+				&:hover {
+					text-decoration: underline;
+				}
 
-						& svg {
-							margin-left: 0.7rem;
-						}
+				p {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					margin-right: 1.5rem;
+
+					& svg {
+						margin-left: 0.7rem;
 					}
+				}
 			}
 		}
 
@@ -194,6 +206,10 @@
 				scroll-snap-type: x mandatory;
 				scroll-behavior: smooth;
 				scrollbar-width: none;
+
+				&::-webkit-scrollbar {
+					display: none;
+				}
 
 				& .slide {
 					border: 1px solid rgba(0, 0, 0, 0.5);
@@ -219,7 +235,7 @@
 
 					& a {
 						text-decoration: none;
-						color: black;
+						color: var(--black-900);
 					}
 
 					& img {

@@ -27,14 +27,14 @@
 		<div class="footerBar">
 			<div class="footerCopyrightText">
 				<div class="logoSection">
-			<div class="footerLogo">
-				<img src={navBarLogoSource} alt="logo" class="logo" />
-				<span class="logoText">{navBarLogoTextSource}</span>
+					<div class="footerLogo">
+						<img src={navBarLogoSource} alt="logo" class="logo" />
+						<span class="logoText">{navBarLogoTextSource}</span>
+					</div>
+				</div>
+				<p>{footerTextCopyright}</p>
+				<p>{footerTextAllRights}</p>
 			</div>
-		</div>
-			<p>{footerTextCopyright}</p>
-			<p>{footerTextAllRights}</p>
-		</div>
 			<div class="footerContact">
 				<p>{footerContactText}</p>
 				<div class="footerEmail">
@@ -69,15 +69,15 @@
 						margin-left: 1rem;
 						transition: all 0.3s ease-in-out;
 
-					&:hover {
-						transform: scale(1.2);
-					}
+						&:hover {
+							transform: scale(1.2);
+						}
 					}
 
 					& .logoText {
 						margin-left: 0.5rem;
-						font-size: 1.2rem;
-						font-weight: bold;
+						font-size: var(--font-body-size);
+						font-weight: var(--font-heavy-weight);
 					}
 				}
 
@@ -135,6 +135,17 @@
 							}
 						}
 					}
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		footer {
+			& .footerBar {
+				& p:nth-child(1),
+				& p:nth-child(3) {
+					display: none;
 				}
 			}
 		}
