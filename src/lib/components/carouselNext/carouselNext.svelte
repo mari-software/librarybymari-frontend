@@ -212,8 +212,8 @@
 				}
 
 				& .slide {
-					border: 1px solid rgba(0, 0, 0, 0.5);
-					border-radius: 25px;
+					border: 0.0625rem solid rgba(0, 0, 0, 0.5);
+					border-radius: 1.5625rem;
 					min-width: 33%;
 					box-sizing: border-box;
 					overflow: hidden;
@@ -272,6 +272,7 @@
 	@media screen and (max-width: 768px) {
 		main {
 			& .carousel {
+				/* z-index: -20; */
 				& .slides {
 					& .slide {
 						min-width: 100%;

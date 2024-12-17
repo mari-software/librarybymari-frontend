@@ -1,5 +1,5 @@
 <script>
-	import CarouselNext from '$lib/carouselNext/carouselNext.svelte';
+	import CarouselNext from '$lib/components/carouselNext/carouselNext.svelte';
 	import Community from '$lib/components/community/Community.svelte';
 	import Carousel from '$lib/components/carousel/Carousel.svelte';
 	import Entrance from '$lib/components/entrance/Entrance.svelte';
