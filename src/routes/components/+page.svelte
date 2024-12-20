@@ -32,4 +32,23 @@ import Sidenavigation from '$lib/components/sideNavigation/sidenavigation.svelte
   ]}
 />
 
-<Components />
+<Components
+componentSource = {[
+  {cardImage: 'https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg', cardTitle: 'Component-1', cardDescription: 'This component does this', link: '/'},
+  {cardImage: 'https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg', cardTitle: 'Component-1', cardDescription: 'This component does this', link: '/'},
+  {cardImage: 'https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg', cardTitle: 'Component-1', cardDescription: 'This component does this', link: '/'},
+  {cardImage: 'https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg', cardTitle: 'Component-1', cardDescription: 'This component does this', link: '/'},
+  {cardImage: 'https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg', cardTitle: 'Component-1', cardDescription: 'This component does this', link: '/'},
+  {cardImage: 'https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg', cardTitle: 'Component-1', cardDescription: 'This component does this', link: '/'},
+  {cardImage: 'https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg', cardTitle: 'Component-1', cardDescription: 'This component does this', link: '/'},
+  {cardImage: 'https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg', cardTitle: 'Component-1', cardDescription: 'This component does this', link: '/'},
+  {cardImage: 'https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg', cardTitle: 'Component-1', cardDescription: 'This component does this', link: '/'},
+  {cardImage: 'https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg', cardTitle: 'Component-1', cardDescription: 'This component does this', link: '/'},
+  {cardImage: 'https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg', cardTitle: 'Component-1', cardDescription: 'This component does this', link: '/'},
+  {cardImage: 'https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg', cardTitle: 'Component-1', cardDescription: 'This component does this', link: '/'},
+  {cardImage: 'https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg', cardTitle: 'Component-1', cardDescription: 'This component does this', link: '/'},
+  {cardImage: 'https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg', cardTitle: 'Component-1', cardDescription: 'This component does this', link: '/'},
+  {cardImage: 'https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg', cardTitle: 'Component-1', cardDescription: 'This component does this', link: '/'},
+  {cardImage: 'https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg', cardTitle: 'Component-1', cardDescription: 'This component does this', link: '/'},
+]}
+/>

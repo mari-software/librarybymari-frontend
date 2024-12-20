@@ -1,71 +1,33 @@
 <script lang="ts">
 	interface compSelectionInterface {
 		// Config
+
+		componentSource: any[];
 	}
+
+	let {
+		//Config
+
+		componentSource = []
+	}: compSelectionInterface = $props();
+	
 </script>
 
 
 <main>
 	<div class="component">
-		<div class="component-card">
-			<img
-				src="https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg"
-				width="200"
-				height="200"
-				alt=""
-			/>
-			<h1>Component-1</h1>
-			<p>This component does this</p>
-		</div>
-		<div class="component-card">
-			<img
-				src="https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg"
-				width="200"
-				height="200"
-				alt=""
-			/>
-			<h1>Component-1</h1>
-			<p>This component does this</p>
-		</div>
-		<div class="component-card">
-			<img
-				src="https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg"
-				
-				alt=""
-			/>
-			<h1>Component-1</h1>
-			<p>This component does this</p>
-		</div>
-		<div class="component-card">
-			<img
-				src="https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg"
-				width="200"
-				height="200"
-				alt=""
-			/>
-			<h1>Component-1</h1>
-			<p>This component does this</p>
-		</div>
-		<div class="component-card">
-			<img
-				src="https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg"
-				width="200"
-				height="200"
-				alt=""
-			/>
-			<h1>Component-1</h1>
-			<p>This component does this</p>
-		</div>
-		<div class="component-card">
-			<img
-				src="https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg"
-				width="200"
-				height="200"
-				alt=""
-			/>
-			<h1>Component-1</h1>
-			<p>This component does this</p>
-		</div>
+
+		{#each componentSource as { cardImage, cardTitle, cardDescription, link }}
+			<a href={link}>
+				<div class="component-card">
+					<img src={cardImage}  alt="" />
+					<h1>{cardTitle}</h1>
+					<p>{cardDescription}</p>
+				</div>
+			</a>
+		{/each}
+
+	
 		
 	</div>
 </main>
@@ -76,11 +38,17 @@
 		& .component {
 			display: flex;
 			flex-wrap: wrap;
+
+			& a {
+				text-decoration: none;
+				color: var(--black-900);
+			}
+
 			& .component-card {
 				display: inline-block;
 				width: 20rem;
-				height: 10rem;
-				height: fit-content;
+				
+			/* 	height: fit-content; */
 				justify-content: center;
 				align-items: center;
 				border: 1px solid #ccc;
@@ -90,8 +58,9 @@
 				transition: all 0.2s ease-in-out;
 
 				& img {
+					aspect-ratio: 1/1;
 					width: 100%;
-					height: 20rem;
+					height: 15rem;
 					border-radius: inherit;
 				}
 
