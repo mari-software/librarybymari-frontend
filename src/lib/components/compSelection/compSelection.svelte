@@ -36,8 +36,10 @@
 	main {
 	
 		& .component {
+			/* border: 1px	solid #000; */
 			display: flex;
 			flex-wrap: wrap;
+			/* overflow: hidden; */
 
 			& a {
 				text-decoration: none;
@@ -45,10 +47,11 @@
 			}
 
 			& .component-card {
+
 				display: inline-block;
 				width: 20rem;
-				
-			/* 	height: fit-content; */
+				/* height: 10px; */
+				height: fit-content;
 				justify-content: center;
 				align-items: center;
 				border: 1px solid #ccc;
@@ -58,9 +61,9 @@
 				transition: all 0.2s ease-in-out;
 
 				& img {
-					aspect-ratio: 1/1;
+					aspect-ratio: 3/2;
 					width: 100%;
-					height: 15rem;
+					height: 10rem;
 					border-radius: inherit;
 				}
 

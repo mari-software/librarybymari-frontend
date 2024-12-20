@@ -7,7 +7,7 @@
 	import TopNavigation from '$lib/components/navigation/TopNavigation.svelte';
 </script>
 
-<TopNavigation
+<!-- <TopNavigation
 	navBarLogoTextSource="mari"
 	navBarLogoSource="https://i.pinimg.com/736x/9a/97/4f/9a974f42aff13171296fbc5ed59ece40.jpg"
 	navBarMenuToggle={true}
@@ -31,7 +31,7 @@
 		{ options: 'option-3', link: '/' },
 		{ options: 'option-4', link: '/' }
 	]}
-/>
+/> -->
 
 <Entrance
 	mainEntranceSource="mari"
@@ -149,11 +149,11 @@ itemLength={2}
 	]}
 />
 
-<hr />
+<!-- <hr />
 <Footer
 	navBarLogoSource="https://anibase.net/files/200e4fbbc54f6ffdb2565919c2fa354d"
 	navBarLogoTextSource="mari"
 	footerTextCopyright={`Copyright &copy; ${new Date().getFullYear()} mari`}
 	footerTextAllRights="All rights reserved"
 	footerContactText="Get regular updated for better experience"
-/>
+/> -->

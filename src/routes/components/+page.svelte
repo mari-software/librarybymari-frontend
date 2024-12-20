@@ -3,6 +3,9 @@
 import Sidenavigation from '$lib/components/sideNavigation/sidenavigation.svelte';
 </script>
 
+
+<div class="component-slide">
+
 <Sidenavigation
   navBarSource={[
     {
@@ -52,3 +55,16 @@ componentSource = {[
   {cardImage: 'https://i.pinimg.com/originals/a0/03/4e/a0034e2ed9dc9e4e76727e4fbdb31d0c.jpg', cardTitle: 'Component-1', cardDescription: 'This component does this', link: '/'},
 ]}
 />
+
+</div>
+
+<style>
+  .component-slide {
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+    gap: 0px; */
+
+    display: flex;
+  }
+
+</style>

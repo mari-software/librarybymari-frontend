@@ -83,6 +83,9 @@
 		} */
 
 		& .sideBar-container, & .components-container  {
+			border: 1px solid #000;
+			overflow: hidden;
+			padding: 0.625rem;
 			display: flex;
 			flex-direction: column;
 			height: 100%;
@@ -106,7 +109,7 @@
 				flex-direction: column;
 				overflow-y: scroll;
 				height: 100%;
-				max-height: 90vh;
+				max-height: 100vh;
 				& .components {
 					display: flex;
 					flex-direction: column;
@@ -118,6 +121,7 @@
 					& ul {
 						list-style: none;
 						& li {
+							margin-left: -15px;
 							font-size: 18px;
 							cursor: pointer;
 							padding-top: 0.625rem;

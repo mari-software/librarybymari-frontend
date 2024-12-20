@@ -149,7 +149,7 @@
 <style>
 	main {
 		& .headerNav {
-			position: fixed;
+			/* position: fixed; */
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
