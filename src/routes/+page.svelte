@@ -14,7 +14,7 @@
 
 	navBarMenuSource={[
 		{ options: 'Home', link: '/' },
-		{ options: 'Components', link: '/' },
+		{ options: 'Components', link: '/components' },
 		{ options: 'CDK', link: '/' },
 		{ options: 'Guides', link: '/' },
 		{ options: 'Donate Us', link: '/' }

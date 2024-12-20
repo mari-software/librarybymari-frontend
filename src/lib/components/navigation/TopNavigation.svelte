@@ -153,7 +153,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			background-color: rgba(250, 249, 253, 1);
+			background-color: rgb(250, 249, 253);
 			box-shadow: 0.1875rem 0.1875rem 0.3125rem rgba(0, 0, 0, 0.1);
 			width: 100%;
 
