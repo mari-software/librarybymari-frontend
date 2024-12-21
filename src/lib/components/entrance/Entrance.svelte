@@ -58,4 +58,12 @@
 			}
 		}
 	}
+
+	@media screen and (max-width: 768px) {
+		section {
+			& .main-entrance {
+				height: 15rem;
+			}
+		}
+	}
 </style>
