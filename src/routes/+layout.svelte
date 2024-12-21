@@ -13,7 +13,7 @@
 		{ options: 'Components', link: '/components' },
 		{ options: 'CDK', link: '/' },
 		{ options: 'Guides', link: '/' },
-		{ options: 'Donate Us', link: '/' }
+		{ options: 'Donate Us', link: '/donationPage' }
 	]}
 
 

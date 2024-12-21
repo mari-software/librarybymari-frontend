@@ -35,8 +35,24 @@
 			/></svg
 		>
 	</div>
-  {#if sideBarToogle}
-	<div class="sideBar-container">
+	{#if sideBarToogle}
+		<div class="sideBar-container">
+			<input type="text" placeholder="Search" />
+			<div class="component-section">
+				{#each navBarSource as { sidenavHeaderSource, sidenavContentSource }}
+					<div class="components">
+						<h1>{sidenavHeaderSource}</h1>
+						<ul>
+							{#each sidenavContentSource as { sidenavComponentSource, link }}
+								<li><a href={link}>{sidenavComponentSource}</a></li>
+							{/each}
+						</ul>
+					</div>
+				{/each}
+			</div>
+		</div>
+	{/if}
+	<div class="components-container">
 		<input type="text" placeholder="Search" />
 		<div class="component-section">
 			{#each navBarSource as { sidenavHeaderSource, sidenavContentSource }}
@@ -51,22 +67,6 @@
 			{/each}
 		</div>
 	</div>
-  {/if}
-  <div class="components-container">
-	<input type="text" placeholder="Search" />
-	<div class="component-section">
-		{#each navBarSource as { sidenavHeaderSource, sidenavContentSource }}
-			<div class="components">
-				<h1>{sidenavHeaderSource}</h1>
-				<ul>
-					{#each sidenavContentSource as { sidenavComponentSource, link }}
-						<li><a href={link}>{sidenavComponentSource}</a></li>
-					{/each}
-				</ul>
-			</div>
-		{/each}
-	</div>
-</div>
 </main>
 
 <style>
@@ -82,15 +82,33 @@
 			display: none;
 		} */
 
-		& .sideBar-container, & .components-container  {
+		& .sideBar-container {
+			/* position: fixed; */
+			top: 2;
+			left: 0;
+			height: 100vh;
+			width: 15rem;
+			z-index: 99;
+			background-color: white;
+			backdrop-filter: blur(0.625rem);
+			box-shadow: -0.625rem 0 0.625rem rgba(0, 0, 0, 0.1);
+			/* flex-direction: column; */
+			/* align-items: flex-start;
+		justify-content: flex-start; */
+			overflow-y: scroll;
+			overflow-x: hidden;
+		}
+
+		& .sideBar-container,
+		& .components-container {
 			border: 1px solid #000;
 			overflow: hidden;
 			padding: 0.625rem;
 			display: flex;
 			flex-direction: column;
-			height: 100%;
-			overflow-x: scroll;
-			overflow-y: hidden;
+			height: 100vh;
+			overflow-y: scroll;
+			/* overflow-y: hidden; */
 
 			&::-webkit-scrollbar {
 				display: none;
