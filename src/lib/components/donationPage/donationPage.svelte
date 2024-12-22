@@ -51,11 +51,11 @@
 		<form>
 			<select>
 				{#each currencySource as { currency, currencyFull }}
-					<option value={currency}>{currencyFull}</option>
+					<option value={currency}>{currency} </option>
 				{/each}
 			</select>
-
 			<input type="text" placeholder="Type the amount..." />
+
 		</form>
 
 	</div>
@@ -67,16 +67,19 @@
 	main {
 		& .donation-intro {
 			margin: 2rem;
+
 			& h1 {
 				font-size: 2rem;
 				margin-bottom: 1rem;
 			}
+
 			& p {
 				width: 75%;
 				font-size: 1.5rem;
 				letter-spacing: 0.1rem;
 				margin-bottom: 1rem;
 			}
+
 			& .quote {
 				font-size: 1.5rem;
 				font-weight: bold;
@@ -99,13 +102,14 @@
 				transition: all 0.2s ease-in;
 
 			}
+
             & .active {
                 background-color: #005bba;
                 color: white;
             }
 
 			& .donation-amount-box:hover {
-				border: 2px solid #005bba;
+				border: 1px solid #005bba;
 				color: #005bba;
 			}
 
@@ -119,39 +123,36 @@
 				align-items: center;
 				justify-content: center;
 				margin: 0.5rem;
+				border: 1px solid #ccc;
+				border-collapse: collapse;
+				border-radius: 0.5rem;
 			}
 
 			& select {
-				padding: 0.5rem 2.5rem;
-				border: 1px solid #ccc;
-				border-radius: 0.5rem;
+				padding: 0.5rem 2rem;
+				
+				border: none;
+				border-right: 1px solid #ccc;
 				cursor: pointer;
 				transition: all 0.2s ease-in;
-
-				& option {
-					padding: 0.5rem 2.5rem;
-					border: 1px solid #ccc;
-					border-radius: 0.5rem;
-					cursor: pointer;
-					transition: all 0.2s ease-in;
-				}
-
 			}
 
-			& select:hover {
-				border: 1.5px solid #005bba;
+			& select:focus {
+				outline: 1.5px solid #005bba;
+				border-radius: 0.5rem;
 			}
 
 			& input {
 				padding: 0.5rem 2.5rem;
-				border: 1px solid #ccc;
+				border: none;
+				/* border: 1px solid #ccc; */
 				border-radius: 0.5rem;
 				cursor: pointer;
 				transition: all 0.2s ease-in;
 			}
 
 			& input:focus {
-				outline: 2px solid #005bba;
+				outline: 1px solid #005bba;
 			}
 
 			/* & .donation-option-box {
@@ -165,6 +166,38 @@
 				cursor: pointer;
 				transition: all 0.2s ease-in-out;
 			} */
+		}
+	}
+
+	@media (max-width: 768px) {
+		main {
+			& .donation-intro {
+				margin: 1rem;
+
+				& h1 {
+					font-size: 1.5rem;
+				}
+
+				& p {
+					font-size: 1.2rem;
+					width: 90%;
+				}
+
+				& .quote {
+					font-size: 1.25rem;
+				}
+			}
+
+			& .donation-box {
+				 width: 80%;
+				 display: grid;
+				 
+
+				& .donation-amount-box {
+					padding: 0.5rem 1.5rem;
+				}
+
+			}
 		}
 	}
 </style>
