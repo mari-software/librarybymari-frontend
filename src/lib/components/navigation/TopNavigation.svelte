@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fly } from "svelte/transition";
 	import SVG from './1203966 1.svg';
 
 	interface navigationBarInterface {
@@ -46,6 +47,8 @@
 
 	// Function
 
+	/* let activeNavMenu = navBarMenuSource.length > 0 ? navBarMenuSource[0].options : ''; */
+
 	let activeNavMenu = $state('activeNavMenu');
 
 	function toggleSideBar() {
@@ -75,7 +78,7 @@
 					{/each}
 				</nav>
 				{#if sideBarToogle}
-					<div class="sideBarMenu">
+					<div class="sideBarMenu" transition:fly={{ x: 300, duration: 500 }}>
 						<!-- svelte-ignore a11y_click_events_have_key_events -->
 						<!-- svelte-ignore a11y_no_static_element_interactions -->
 						<div class="crossIcon" onclick={toggleSideBar}>
@@ -277,6 +280,7 @@
 			padding: 0.625rem 0;
 			width: 100%;
 		}
+		
 		& .sideBarMenu {
 			position: fixed;
 			top: 0;

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { fly } from "svelte/transition";
+
 	interface sidenavigationInterface {
 		// Config
 		navBarSource: any[];
@@ -36,7 +38,7 @@
 		>
 	</div>
 	{#if sideBarToogle}
-		<div class="sideBar-container">
+		<div class="sideBar-container" transition:fly={{ x: -300, duration: 500 }}>
 			<input type="text" placeholder="Search" />
 			<div class="component-section">
 				{#each navBarSource as { sidenavHeaderSource, sidenavContentSource }}

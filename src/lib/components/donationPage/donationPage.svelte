@@ -1,6 +1,11 @@
 <script lang="ts">
 	interface donationPageInterface {
 		// Config
+
+		donationHeader: string;
+		donationText: string;
+		donationQuote: string;
+
 		currencySource: any[];
 		donationAmount: any[];
 
@@ -10,43 +15,45 @@
 	let {
 		//Config
 		currencySource = [],
-		donationAmount = []
+		donationAmount = [],
+
+		donationHeader = '',
+		donationText = '',
+		donationQuote = ''
 	}: donationPageInterface = $props();
 
 	// Function
-	let activeCurrency = $state('activeCurrency');
+	let activeCurrency = $state();
 
-
-	function setActive(activeCurrency: string) {
-		activeCurrency = activeCurrency;
+	function setActive(selectedCurrency: string) {
+		activeCurrency = selectedCurrency;
 	}
-
-
 </script>
 
 <main>
 	<div class="donation-intro">
-		<h1>Help us do more</h1>
+		<h1>{donationHeader}</h1>
 		<p>
-			Mari_Gold is committed to providing free, high-quality components and assets to the developer
-			community. Your donation will help us continue to develop new tools, improve existing ones,
-			and keep our platform running smoothly.
+			{donationText}
 		</p>
-		<div class="quote">Every contribution, no matter how small, makes a big difference.</div>
+		<div class="quote">{donationQuote}</div>
 	</div>
 
 	<div class="donation-box">
-
-		{#each donationAmount as  {amount}}
+		{#each donationAmount as { amount }}
 			<!-- svelte-ignore a11y_click_events_have_key_events -->
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
-			<div 
+			<div
+				onclick={() => setActive(amount)}
+				class="donation-amount-box {activeCurrency === amount ? 'active' : ''} "
+			>
+				{amount}
+			</div>
+			<!-- <div 
 			onclick={() => setActive(amount)}
-			class="donation-amount-box {activeCurrency === amount ? 'active' : ''}">{amount}</div>
+			class="donation-amount-box {activeCurrency === amount ? 'active' : ''}">{amount}</div> -->
 			<!-- <div class="donation-amount-box" class:active={activeCurrency === amount}>{amount}</div> -->
 		{/each}
-
-		
 
 		<form>
 			<select>
@@ -55,12 +62,8 @@
 				{/each}
 			</select>
 			<input type="text" placeholder="Type the amount..." />
-
 		</form>
-
 	</div>
-
-
 </main>
 
 <style>
@@ -100,23 +103,22 @@
 				border-radius: 0.5rem;
 				cursor: pointer;
 				transition: all 0.2s ease-in;
-
 			}
 
-            & .active {
-                background-color: #005bba;
-                color: white;
-            }
+			& .active {
+				background-color: #005bba;
+				color: white;
+			}
 
 			& .donation-amount-box:hover {
 				border: 1px solid #005bba;
 				color: #005bba;
 			}
 
-            & .donation-amount-box:active {
-                background-color: #005bba;
-                color: white;
-            }
+			& .donation-amount-box:active {
+				background-color: #005bba;
+				color: white;
+			}
 
 			& form {
 				display: flex;
@@ -130,7 +132,7 @@
 
 			& select {
 				padding: 0.5rem 2rem;
-				
+
 				border: none;
 				border-right: 1px solid #ccc;
 				cursor: pointer;
@@ -143,6 +145,7 @@
 			}
 
 			& input {
+				display: flex;
 				padding: 0.5rem 2.5rem;
 				border: none;
 				/* border: 1px solid #ccc; */
@@ -179,8 +182,8 @@
 				}
 
 				& p {
-					font-size: 1.2rem;
-					width: 90%;
+					font-size: 1.12rem;
+					width: 100%;
 				}
 
 				& .quote {
@@ -189,14 +192,24 @@
 			}
 
 			& .donation-box {
-				 width: 80%;
-				 display: grid;
-				 
+				width: 10%;
+				display: grid;
+				grid-template-columns: repeat(2, 0fr);
+				grid-template-rows: repeat(2, 0fr);
+				 grid-gap: -20px;
 
 				& .donation-amount-box {
+					width: 1.5rem;
 					padding: 0.5rem 1.5rem;
 				}
 
+				& select {
+					padding: 0.5rem 1rem;
+				}
+
+				& input {
+					padding: 0.5rem 2rem;
+				}
 			}
 		}
 	}
