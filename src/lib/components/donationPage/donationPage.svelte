@@ -64,6 +64,18 @@
 			<input type="text" placeholder="Type the amount..." />
 		</form>
 	</div>
+
+	<p>
+		{#if activeCurrency}
+		amount:
+		 {activeCurrency} 
+		 
+		 {#if activeCurrency}
+			{currencySource}
+		
+		 {/if}
+	  {/if}
+	</p>
 </main>
 
 <style>

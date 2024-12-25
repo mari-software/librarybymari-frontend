@@ -3,31 +3,32 @@
 
 <form action="/submit" method="POST">
     
-  
-      <label for="firstname">First Name:<span aria-hidden="true" style="color: red;">*</span></label>
-      <input 
-        type="text"
-        id="firstname"
-        name="firstname"
-        required
-        autocomplete="given-name"
-      />
-  
-      <label for="lastname">Last Name:<span aria-hidden="true" style="color: red;">*</span></label>
-      <input 
-        type="text"
-        id="lastname"
-        name="lastname"
-        required
-        autocomplete="family-name"
-      />
-  
+        <div class="info-name">
+
+          <label for="firstname">First Name:<span aria-hidden="true" style="color: red;">*</span></label>
+          <input 
+          type="text"
+          id="firstname"
+          name="firstname"
+          required
+          />
+          
+          <label for="lastname">Last Name:<span aria-hidden="true" style="color: red;">*</span></label>
+          <input 
+          type="text"
+          id="lastname"
+          name="lastname"
+          required
+          />
+          
+        </div>  
+
       <label for="emailaddress">Email Address:</label>
       <input
         type="email"
         id="emailaddress"
         name="emailaddress"
-        autocomplete="email"
+        required
       />
    
   
@@ -42,14 +43,22 @@
     main {
         
         & form {
-            display: grid;
-          grid-template-areas: initial;
-           /*  flex-basis: 100%;
-					order: calc(2 - 1); */
+           /*  display: grid;
+          grid-template-areas: initial; */
+            
+          & .info-name {
+            display: flex;
+            flex-direction: row;
+            margin-left: 5rem;
+            gap: 1rem;
 
+            
+          }
+          
                 & input {
                     width: 20rem;
                     height: 1.2rem;
+                    
                 }
         }
 

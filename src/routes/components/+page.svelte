@@ -3,36 +3,37 @@
 import Sidenavigation from '$lib/components/sideNavigation/sidenavigation.svelte';
 </script>
 
+<main>
 
-<div class="component-slide">
-
-<Sidenavigation
-  navBarSource={[
-    {
+  <div class="component-slide">
+    
+    <Sidenavigation
+    navBarSource={[
+      {
 	  sidenavHeaderSource: 'Category-1',
-      sidenavContentSource: [
-        {  sidenavComponentSource: 'Component-1', link: '/' },
-        { sidenavComponentSource: 'Component-2', link: '/'  },
-        { sidenavComponentSource: 'Component-3', link: '/'  },
-      ]
-    },
-    {
-	  sidenavHeaderSource: 'Category-1',
-      sidenavContentSource: [
-        {  sidenavComponentSource: 'Component-1', link: '/' },
-        { sidenavComponentSource: 'Component-2', link: '/'  },
-        { sidenavComponentSource: 'Component-3', link: '/'  },
-      ]
-    },
-    {
-	  sidenavHeaderSource: 'Category-1',
-      sidenavContentSource: [
-        {  sidenavComponentSource: 'Component-1', link: '/' },
-        { sidenavComponentSource: 'Component-2', link: '/'  },
-        { sidenavComponentSource: 'Component-3', link: '/'  },
-      ]
-    },
-  ]}
+    sidenavContentSource: [
+      {  sidenavComponentSource: 'Component-1', link: '/' },
+      { sidenavComponentSource: 'Component-2', link: '/'  },
+      { sidenavComponentSource: 'Component-3', link: '/'  },
+    ]
+  },
+  {
+    sidenavHeaderSource: 'Category-1',
+    sidenavContentSource: [
+      {  sidenavComponentSource: 'Component-1', link: '/' },
+      { sidenavComponentSource: 'Component-2', link: '/'  },
+      { sidenavComponentSource: 'Component-3', link: '/'  },
+    ]
+  },
+  {
+    sidenavHeaderSource: 'Category-1',
+    sidenavContentSource: [
+      {  sidenavComponentSource: 'Component-1', link: '/' },
+      { sidenavComponentSource: 'Component-2', link: '/'  },
+      { sidenavComponentSource: 'Component-3', link: '/'  },
+    ]
+  },
+]}
 />
 
 <Components
@@ -57,13 +58,18 @@ componentSource = {[
 
 </div>
 
+</main>
 <style>
+
+  main {
+    margin-top: 4rem;
+  }
   .component-slide {
     /* display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
     gap: 0px; */
-
+    
     display: flex;
   }
-
+  
 </style>

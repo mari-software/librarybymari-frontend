@@ -195,7 +195,7 @@
 			display: flex;
 			position: relative;
 			justify-content: center;
-			align-items: center;
+			/* align-items: center; */
 			/* width: 100%;
 			height: 100%; */
 
@@ -214,11 +214,11 @@
 				& .slide {
 					border: 0.0625rem solid rgba(0, 0, 0, 0.5);
 					border-radius: 1.5625rem;
-					min-width: 33%;
-					box-sizing: border-box;
-					overflow: hidden;
+					min-width: 27%;
+					/* box-sizing: border-box; */
+					/* overflow: hidden; */
 					text-align: center;
-					width: 15rem;
+					/* width: 12.5rem; */
 					height: 15rem;
 					cursor: pointer;
 					margin-right: 2rem;

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { fly } from "svelte/transition";
+	import { fly, slide } from 'svelte/transition';
 	import SVG from './1203966 1.svg';
 
 	interface navigationBarInterface {
@@ -47,9 +47,9 @@
 
 	// Function
 
-	/* let activeNavMenu = navBarMenuSource.length > 0 ? navBarMenuSource[0].options : ''; */
-
 	let activeNavMenu = $state('activeNavMenu');
+
+	activeNavMenu = navBarMenuSource.length > 0 ? navBarMenuSource[0].options : '';
 
 	function toggleSideBar() {
 		sideBarToogle = !sideBarToogle;
@@ -122,11 +122,11 @@
 
 			<div class="headerMenu">
 				{#if navBarHeaderDropDown}
-					<div class="dropDown">
+					<div class="dropDown" >
 						<input type="checkbox" class="combo-box" id="combo-box" />
 						<label for="combo-box">Version</label>
 
-						<div class="dropdown-content">
+						<div class="dropdown-content"  transition:slide|globalThis>
 							{#each dropDownSource as { options, link }}
 								<ul>
 									<li><a href={link}>{options}</a></li>
@@ -152,7 +152,8 @@
 <style>
 	main {
 		& .headerNav {
-			/* position: fixed; */
+			position: fixed;
+			z-index: 999;
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
@@ -280,7 +281,7 @@
 			padding: 0.625rem 0;
 			width: 100%;
 		}
-		
+
 		& .sideBarMenu {
 			position: fixed;
 			top: 0;
