@@ -24,6 +24,7 @@
 
 	// Function
 	let activeCurrency = $state();
+	let isChecked = $state(false);
 
 	function setActive(selectedCurrency: string) {
 		activeCurrency = selectedCurrency;
@@ -70,12 +71,18 @@
 		amount:
 		 {activeCurrency} 
 		 
-		 {#if activeCurrency}
+		 <!-- {#if activeCurrency}
 			{currencySource}
 		
-		 {/if}
+		 {/if} -->
 	  {/if}
 	</p>
+
+	<input type="checkbox" id="checkbox" name="checkbox" bind:checked={isChecked}>
+	<label for="checkbox">Yes, I will receive the receipt of my donation. </label>
+	{#if isChecked}
+  <p>Checkbox is checked</p>
+{/if}
 </main>
 
 <style>
