@@ -77,7 +77,7 @@
 			{#each carouselDataSource as { image, heading, carouselDataHeaderSource, carouselDataTextSource, index, link }}
 				<div
 					class="slide"
-					style="transform: translateX({-active * 50}%)"
+					style="transform: translateX({-active * 70}%)"
 					class:active={active === index}
 				>
 					{#if sliderImage}
@@ -178,7 +178,7 @@
 					text-decoration: underline;
 				}
 
-				p {
+				& p {
 					display: flex;
 					justify-content: center;
 					align-items: center;
@@ -192,7 +192,10 @@
 		}
 
 		& .carousel {
-			display: flex;
+			/* display: flex; */
+			height: 20rem;
+			margin: 0;
+			padding: 0;
 			position: relative;
 			justify-content: center;
 			/* align-items: center; */

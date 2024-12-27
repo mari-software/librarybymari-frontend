@@ -152,6 +152,8 @@
 <style>
 	main {
 		& .headerNav {
+			
+			top: 0;
 			position: fixed;
 			z-index: 999;
 			display: flex;

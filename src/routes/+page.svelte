@@ -202,6 +202,7 @@ footerContactText="Get regular updated for better experience"
 
 <style>
 	main {
+
 		margin-top: 4rem;
 	}
 </style>

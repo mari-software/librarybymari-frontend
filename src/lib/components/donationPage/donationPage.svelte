@@ -8,6 +8,7 @@
 
 		currencySource: any[];
 		donationAmount: any[];
+		donationOption: any[];
 
 		// Function
 	}
@@ -16,6 +17,7 @@
 		//Config
 		currencySource = [],
 		donationAmount = [],
+		donationOption = [],
 
 		donationHeader = '',
 		donationText = '',
@@ -24,11 +26,10 @@
 
 	// Function
 	let activeCurrency = $state();
-	let isChecked = $state(false);
 
 	function setActive(selectedCurrency: string) {
-		activeCurrency = selectedCurrency;
-	}
+        activeCurrency = (activeCurrency === selectedCurrency) ? null : selectedCurrency;
+    }
 </script>
 
 <main>
@@ -50,10 +51,6 @@
 			>
 				{amount}
 			</div>
-			<!-- <div 
-			onclick={() => setActive(amount)}
-			class="donation-amount-box {activeCurrency === amount ? 'active' : ''}">{amount}</div> -->
-			<!-- <div class="donation-amount-box" class:active={activeCurrency === amount}>{amount}</div> -->
 		{/each}
 
 		<form>
@@ -66,27 +63,44 @@
 		</form>
 	</div>
 
-	<p>
-		{#if activeCurrency}
-		amount:
-		 {activeCurrency} 
-		 
-		 <!-- {#if activeCurrency}
-			{currencySource}
-		
-		 {/if} -->
-	  {/if}
-	</p>
+	<div class="donation-check">
+		<div class="donation-source">
+			<div>
+				<span>Amount:</span>
+				{#if activeCurrency}
+				<div class="amount">
 
-	<input type="checkbox" id="checkbox" name="checkbox" bind:checked={isChecked}>
-	<label for="checkbox">Yes, I will receive the receipt of my donation. </label>
-	{#if isChecked}
-  <p>Checkbox is checked</p>
-{/if}
+					{activeCurrency}
+				</div>
+
+					<!-- {#if activeCurrency}
+				{currencySource}
+				
+				{/if} -->
+				{/if}
+			</div>
+
+			<input type="checkbox" id="checkbox" name="checkbox" />
+			<label for="checkbox">Yes, I will receive the receipt of my donation. </label>
+		</div>
+		<div class="donation-option">
+			<p>
+				By donating, you agree to our <span>terms of services</span> and
+				<span>privacy policy</span>.
+			</p>
+
+			{#each donationOption as { optionList }}
+				<ul class="donation-option-list">
+					<li>{optionList}</li>
+				</ul>
+			{/each}
+		</div>
+	</div>
 </main>
 
 <style>
 	main {
+
 		& .donation-intro {
 			margin: 2rem;
 
@@ -167,8 +181,8 @@
 				display: flex;
 				padding: 0.5rem 2.5rem;
 				border: none;
-				/* border: 1px solid #ccc; */
-				border-radius: 0.5rem;
+				border-radius: 0.3rem;
+				outline: none;
 				cursor: pointer;
 				transition: all 0.2s ease-in;
 			}
@@ -177,19 +191,99 @@
 				outline: 1px solid #005bba;
 			}
 
-			/* & .donation-option-box {
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-				justify-content: center;
-				margin: 0.5rem;
-				border: 1px solid #ccc;
-				border-radius: 0.5rem;
+			& input::placeholder {
+				color: #ccc;
+			}
+		}
+
+		& .donation-check {
+			margin: 2rem;
+			display: flex;
+
+			& .donation-source {
+				
+				& div {
+					font-size: 1.25rem;
+					
+					& span {
+						font-weight: bold;
+					}
+				}
+
+				& .amount {
+					font-size: 4rem;
+					margin: 1.2rem;
+				}
+
+				& label {
+					color: #4D4D4D;
+
+				}
+
+				& input[type="checkbox"]:checked + label {
+					color: black;
+				}	
+			}
+			
+			& p {
+				font-size: 1.25rem;
+				
+				margin-bottom: 1rem;
+			}
+			
+			& input {
+				margin-right: 0.5rem;
+			}
+			
+			& label {
+				font-size: 1.25rem;
 				cursor: pointer;
-				transition: all 0.2s ease-in-out;
-			} */
+			}
+			 
+			& .donation-option {
+				/* margin-top: 1rem; */
+				margin-left: 15rem;
+				
+				& p {
+					font-size: 1.25rem;
+					margin-bottom: 1rem;
+					width: 20rem;
+
+					& span {
+						color: #005bba;
+						cursor: pointer;
+					}
+				}
+
+				& ul {
+					
+					& li {
+						list-style: none;
+						width: 20rem;
+						height: 2.4rem;
+						border-radius: 0.5rem;
+						font-size: 1.25rem;
+						/* margin-bottom: 0.5rem; */
+						background-color: #005bba;
+						transition: all 0.2s ease-in;
+						cursor: pointer;
+					
+						color: white;
+						text-align: center;
+						
+						/* &.active {
+							background-color: #FFC439;
+						} */
+					}
+				}
+
+				& .donation-option-list {
+					margin-left: -1rem;
+				}
+			}
 		}
 	}
+	
 
 	@media (max-width: 768px) {
 		main {
@@ -213,9 +307,7 @@
 			& .donation-box {
 				width: 10%;
 				display: grid;
-				grid-template-columns: repeat(2, 0fr);
-				grid-template-rows: repeat(2, 0fr);
-				 grid-gap: -20px;
+				
 
 				& .donation-amount-box {
 					width: 1.5rem;
