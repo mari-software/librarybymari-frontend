@@ -1,4 +1,6 @@
 <script lang="ts">
+	import InfoPage from "../informationPage/infoPage.svelte";
+
 	interface donationPageInterface {
 		// Config
 
@@ -26,9 +28,16 @@
 
 	// Function
 	let activeCurrency = $state();
+	let amount = $state();
+	let currencyValue = $state();
+	let currencyOption = $state();
 
 	function setActive(selectedCurrency: string) {
         activeCurrency = (activeCurrency === selectedCurrency) ? null : selectedCurrency;
+    }
+
+	function activeCurrencyOption(selectedCurrency: string) {
+        currencyOption = (currencyOption === selectedCurrency) ? null : selectedCurrency;
     }
 </script>
 
@@ -54,29 +63,50 @@
 		{/each}
 
 		<form>
-			<select>
+			<select bind:value={currencyValue}>
 				{#each currencySource as { currency, currencyFull }}
 					<option value={currency}>{currency} </option>
 				{/each}
 			</select>
-			<input type="text" placeholder="Type the amount..." />
+			<input type="number" placeholder="Type the amount..." bind:value={amount} />
 		</form>
 	</div>
+	<hr />
 
+	<InfoPage />
+
+	<hr />
 	<div class="donation-check">
 		<div class="donation-source">
-			<div>
+			<div class="amount-box" style="display: flex;">
 				<span>Amount:</span>
-				{#if activeCurrency}
-				<div class="amount">
 
-					{activeCurrency}
-				</div>
-
-					<!-- {#if activeCurrency}
-				{currencySource}
-				
+				<!-- {#if amount}
+					<div class="amount">
+						{amount}$
+					</div>
+					{#if currencyValue}
+						<p class="amount">{currencyValue}</p>
+					{/if}
+				{:else if activeCurrency}
+					<div class="amount">
+						{activeCurrency}
+					</div>
+					{#if currencyValue}
+						<p class="amount">{currencyValue}</p>
+					{/if}
 				{/if} -->
+				{#if amount || activeCurrency}
+					<div class="amount">
+						{#if amount}
+							{amount}$
+						{:else}
+							{activeCurrency}
+						{/if}
+					</div>
+					{#if currencyValue}
+						<p class="amount">{currencyValue}</p>
+					{/if}
 				{/if}
 			</div>
 
@@ -91,7 +121,13 @@
 
 			{#each donationOption as { optionList }}
 				<ul class="donation-option-list">
-					<li>{optionList}</li>
+					<!-- svelte-ignore a11y_click_events_have_key_events -->
+					<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+					<li 
+					
+					onclick={() => activeCurrencyOption(optionList)}
+					class="donation-option-list {currencyOption === optionList ? 'active' : ''} "
+					>{optionList}</li>
 				</ul>
 			{/each}
 		</div>
@@ -199,10 +235,11 @@
 		& .donation-check {
 			margin: 2rem;
 			display: flex;
+			justify-content: space-around;
 
 			& .donation-source {
 				
-				& div {
+				& .amount-box {
 					font-size: 1.25rem;
 					
 					& span {
@@ -227,7 +264,6 @@
 			
 			& p {
 				font-size: 1.25rem;
-				
 				margin-bottom: 1rem;
 			}
 			
@@ -242,11 +278,12 @@
 			 
 			& .donation-option {
 				/* margin-top: 1rem; */
-				margin-left: 15rem;
+				/* margin-left: 20rem; */
 				
 				& p {
+					text-align: center;
 					font-size: 1.25rem;
-					margin-bottom: 1rem;
+					margin: 1rem 0 1rem 1.5rem;
 					width: 20rem;
 
 					& span {
@@ -256,29 +293,37 @@
 				}
 
 				& ul {
-					
+						text-align: center;
 					& li {
+						display: flex;
+						align-items: center;
+						justify-content: center;
 						list-style: none;
-						width: 20rem;
-						height: 2.4rem;
-						border-radius: 0.5rem;
-						font-size: 1.25rem;
-						/* margin-bottom: 0.5rem; */
+						/* width: 20rem; */
+						height: 2.75rem;
+						border-radius: 0.25rem;
+						font-size: 1.5rem;
 						background-color: #005bba;
 						transition: all 0.2s ease-in;
 						cursor: pointer;
-					
 						color: white;
-						text-align: center;
 						
-						/* &.active {
+						&:hover {
 							background-color: #FFC439;
-						} */
+						}
+
+						&:active {
+							background-color: #FFC439;
+						}
+
 					}
 				}
-
+				
 				& .donation-option-list {
-					margin-left: -1rem;
+					
+					& .active {
+						background-color: #FFC439;
+					}
 				}
 			}
 		}
@@ -310,6 +355,7 @@
 				
 
 				& .donation-amount-box {
+					display: grid;
 					width: 1.5rem;
 					padding: 0.5rem 1.5rem;
 				}
@@ -319,7 +365,49 @@
 				}
 
 				& input {
+					/* display: block; */
 					padding: 0.5rem 2rem;
+				}
+
+			}
+			
+			& .donation-check {
+				display: block;
+
+				& .donation-source {
+					margin: 1rem;
+
+						& label {
+							font-size: 1.1rem;
+					}
+
+					& .amount-box {
+						font-size: 1.25rem;
+					}
+
+					& .amount {
+						font-size: 1.5rem;
+						margin: 0.5rem;
+					}
+				}
+
+				& .donation-option {
+					/* display: flex; */
+					flex-direction: column;
+					margin: 0;
+					
+					& p {
+						font-size: 1.2rem;
+						width: 15rem;
+					}
+
+					& ul {
+						& li {
+							/* width: 10rem; */
+							height: 2rem;
+							font-size: 1.2rem;
+						}
+					}
 				}
 			}
 		}

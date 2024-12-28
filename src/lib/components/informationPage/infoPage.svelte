@@ -26,10 +26,19 @@
     main {
         
         & form {
-          display: flex;
+         /*  display: flex; */
                 & input {
                     width: 20rem;
                     height: 1.2rem;
+            }
+
+            & .info-name {
+                display: flex;
+                margin-bottom: 2rem;
+                
+                & input[type="text"] {
+                    margin-right: 1rem;
+                }
             }
         }
 
@@ -49,6 +58,11 @@
             & form {
                 /* display: flex; */
                 flex-direction: column;
+
+                & .info-name {
+                    display: block;
+                    margin-bottom: 0;
+                }
 
                 & input {
                     width: 90%;

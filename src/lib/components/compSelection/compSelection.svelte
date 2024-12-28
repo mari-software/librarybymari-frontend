@@ -92,7 +92,7 @@
 				height: 100vh;
 				& .component-card {
 					width: 8.5rem;
-					height: 8.5rem;
+					height: 8rem;
 					/* justify-content: center;
 					align-items: center; */
 					border: 1px solid #ccc;
@@ -103,7 +103,7 @@
 
 					& img {
 						width: 100%;
-						height: 10rem;
+						height: 8rem;
 						border-radius: inherit;
 					}
 

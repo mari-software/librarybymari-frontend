@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { fly, slide } from 'svelte/transition';
 	import SVG from './1203966 1.svg';
+	import { preventDefault } from 'svelte/legacy';
 
 	interface navigationBarInterface {
 		// Config
@@ -27,8 +28,8 @@
 
 	let {
 		//Config
-		navBarLogoSource = 'https://anibase.net/files/200e4fbbc54f6ffdb2565919c2fa354d',
-		navBarLogoTextSource = 'Mari_Gold',
+		navBarLogoSource = '',
+		navBarLogoTextSource = '',
 
 		navBarMenuToggle = undefined,
 		navBarMenuSource = [],
@@ -58,6 +59,7 @@
 	function setActive(selectedNavMenu: string) {
 		activeNavMenu = selectedNavMenu;
 	}
+
 </script>
 
 <main>
@@ -98,8 +100,8 @@
 							<li>
 								<a
 									href={link}
-									onclick={() => setActive(options)}
-									class="navItem {activeNavMenu === options ? 'active' : ''}">{options}</a
+									onclick={() =>  setActive(options)}
+									class="navItem {activeNavMenu === options ? 'active' : ''}"  >{options}</a
 								>
 							</li>
 						{/each}
@@ -122,11 +124,11 @@
 
 			<div class="headerMenu">
 				{#if navBarHeaderDropDown}
-					<div class="dropDown" >
+					<div class="dropDown">
 						<input type="checkbox" class="combo-box" id="combo-box" />
 						<label for="combo-box">Version</label>
 
-						<div class="dropdown-content"  transition:slide|globalThis>
+						<div class="dropdown-content" transition:slide|globalThis>
 							{#each dropDownSource as { options, link }}
 								<ul>
 									<li><a href={link}>{options}</a></li>

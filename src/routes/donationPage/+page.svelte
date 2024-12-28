@@ -2,7 +2,6 @@
 	import SVG from './196566 1.svg';
 
 	import DonationPage from '$lib/components/donationPage/donationPage.svelte';
-	import InfoPage from '$lib/components/informationPage/infoPage.svelte';
 </script>
 <main>
 
@@ -26,8 +25,6 @@
 	/>
 	
 	<hr />
-	
-	<InfoPage />
 	
 </main>
 
