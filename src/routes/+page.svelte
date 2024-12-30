@@ -1,10 +1,13 @@
 <script>
+// @ts-nocheck
+
 	import CarouselNext from '$lib/components/carouselNext/carouselNext.svelte';
 	import Community from '$lib/components/community/Community.svelte';
 	import Carousel from '$lib/components/carousel/Carousel.svelte';
 	import Entrance from '$lib/components/entrance/Entrance.svelte';
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import TopNavigation from '$lib/components/navigation/TopNavigation.svelte';
+	import ChBoxCarou from '$lib/components/carouselNext/chBoxCarou.svelte';
 </script>
 
 <main>
@@ -45,6 +48,19 @@
 		
 		<!-- <Carousel /> -->
 		
+		<!-- Carousel-1 -->
+
+	<ChBoxCarou 
+	checkboxSource={[
+		{
+			descriptionText: "This is a description text of this check box",
+			descriptionButton: "something",
+			descriptionImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFki8_gG2u37tRZsH87kgIrytjFgpxrzepiw&s"
+		},
+	]}
+	/>
+
+
 		<!-- Carousel-1 -->
 		
 		<!-- <CarouselNext
