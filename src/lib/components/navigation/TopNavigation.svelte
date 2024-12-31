@@ -1,5 +1,7 @@
 <script lang="ts">
+	import { fly, slide } from 'svelte/transition';
 	import SVG from './1203966 1.svg';
+	import { preventDefault } from 'svelte/legacy';
 
 	interface navigationBarInterface {
 		// Config
@@ -9,13 +11,7 @@
 		navBarMenuToggle?: boolean;
 		navBarMenuSource: any[];
 
-		navBarSearchToggle?: boolean;
-		navBarSearchSource?: string;
-
 		navBarHeaderDropDown?: boolean;
-
-		NavBarMenuButtonToggle?: boolean;
-		NavBarMenuButtonSource?: string;
 
 		NavBarMenuIconToggle?: boolean;
 		NavBarMenuIconSource?: string;
@@ -32,19 +28,13 @@
 
 	let {
 		//Config
-		navBarLogoSource = 'https://anibase.net/files/200e4fbbc54f6ffdb2565919c2fa354d',
-		navBarLogoTextSource = 'Mari_Gold',
+		navBarLogoSource = '',
+		navBarLogoTextSource = '',
 
 		navBarMenuToggle = undefined,
 		navBarMenuSource = [],
 
-		navBarSearchToggle = undefined,
-		navBarSearchSource = '',
-
 		navBarHeaderDropDown = true,
-
-		NavBarMenuButtonToggle = undefined,
-		NavBarMenuButtonSource = '',
 
 		NavBarMenuIconToggle = undefined,
 		NavBarMenuIconSource = '',
@@ -60,6 +50,8 @@
 
 	let activeNavMenu = $state('activeNavMenu');
 
+	activeNavMenu = navBarMenuSource.length > 0 ? navBarMenuSource[0].options : '';
+
 	function toggleSideBar() {
 		sideBarToogle = !sideBarToogle;
 	}
@@ -68,7 +60,6 @@
 		activeNavMenu = selectedNavMenu;
 	}
 
-	
 </script>
 
 <main>
@@ -87,20 +78,48 @@
 							class="navItem {activeNavMenu === options ? 'active' : ''}">{options}</a
 						>
 					{/each}
-								<!-- svelte-ignore a11y_click_events_have_key_events -->
-				<!-- svelte-ignore a11y_no_static_element_interactions -->
-
-				<div class="sideMenuIcon" >
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						height="24px"
-						viewBox="0 -960 960 960"
-						width="24px"
-						fill="black"
-						><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg
-					>
-				</div>
 				</nav>
+				{#if sideBarToogle}
+					<div class="sideBarMenu" transition:fly={{ x: 300, duration: 500 }}>
+						<!-- svelte-ignore a11y_click_events_have_key_events -->
+						<!-- svelte-ignore a11y_no_static_element_interactions -->
+						<div class="crossIcon" onclick={toggleSideBar}>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								height="24px"
+								viewBox="0 -960 960 960"
+								width="24px"
+								fill="black"
+							>
+								<path
+									d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+								/></svg
+							>
+						</div>
+						{#each navBarMenuSource as { options, link }}
+							<li>
+								<a
+									href={link}
+									onclick={() =>  setActive(options)}
+									class="navItem {activeNavMenu === options ? 'active' : ''}"  >{options}</a
+								>
+							</li>
+						{/each}
+					</div>
+				{/if}
+			</div>
+			<!-- svelte-ignore a11y_click_events_have_key_events -->
+			<!-- svelte-ignore a11y_no_static_element_interactions -->
+
+			<div class="sideMenuIcon" onclick={toggleSideBar}>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					height="24px"
+					viewBox="0 -960 960 960"
+					width="24px"
+					fill="black"
+					><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg
+				>
 			</div>
 
 			<div class="headerMenu">
@@ -109,7 +128,7 @@
 						<input type="checkbox" class="combo-box" id="combo-box" />
 						<label for="combo-box">Version</label>
 
-						<div class="dropdown-content">
+						<div class="dropdown-content" transition:slide|globalThis>
 							{#each dropDownSource as { options, link }}
 								<ul>
 									<li><a href={link}>{options}</a></li>
@@ -123,8 +142,6 @@
 					<img src={SVG} alt="" />
 				</div>
 
-	
-
 				{#if NavBarMenuIconToggle}
 					<img src={NavBarMenuIconSource} alt="" class="MenuIcon" />
 				{/if}
@@ -137,14 +154,16 @@
 <style>
 	main {
 		& .headerNav {
-			position: relative;
+			
+			top: 0;
+			position: fixed;
+			z-index: 999;
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			background-color: rgba(250, 249, 253, 1);
+			background-color: rgb(250, 249, 253);
 			box-shadow: 0.1875rem 0.1875rem 0.3125rem rgba(0, 0, 0, 0.1);
 			width: 100%;
-			box-sizing: border-box;
 
 			& .headerLogo {
 				display: flex;
@@ -168,13 +187,13 @@
 			}
 
 			& .sideMenuIcon {
-				position: relative;
+				position: absolute;
 				display: none;
+				cursor: pointer;
 			}
 			& .headerMenu {
 				display: flex;
 				align-items: center;
-
 
 				& .MenuIcon {
 					height: 2rem;
@@ -267,6 +286,40 @@
 			width: 100%;
 		}
 
+		& .sideBarMenu {
+			position: fixed;
+			top: 0;
+			right: 0;
+			height: 100vh;
+			width: 15.625rem;
+			z-index: 99;
+			background-color: white;
+			backdrop-filter: blur(0.625rem);
+			box-shadow: -0.625rem 0 0.625rem rgba(0, 0, 0, 0.1);
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: flex-start;
+
+			& .crossIcon {
+				margin: 0.9375rem 0 0 0.75rem;
+				cursor: pointer;
+			}
+
+			& li {
+				list-style: none;
+				width: 100%;
+				text-align: left;
+				margin: 0.5rem 0;
+				padding: 0.5rem 1rem;
+				cursor: pointer;
+				color: black;
+
+				&:hover {
+					background-color: rgba(0, 0, 0, 0.1);
+				}
+			}
+		}
+
 		& .navItem {
 			text-decoration: none;
 			font-size: 1.1rem;
@@ -285,11 +338,11 @@
 		main {
 			& .headerNav {
 				& .sideMenuIcon {
+					right: 4rem;
 					display: block;
 					cursor: pointer;
 				}
 				& .headerMenu {
-
 					& p {
 						display: none;
 					}
@@ -301,39 +354,7 @@
 			}
 
 			& .navbarMenu {
-				display: inline-block;
-				position: absolute;
 				display: none;
-				width: 90%;
-				left: 0;
-				overflow: hidden;
-
-				&::after {
-					content: 'x';
-					position: absolute;
-					top: 1rem;
-					right: 2rem;
-					font-size: 1.5rem;
-					cursor: pointer;
-				}
-
-				& .navItem {
-					display: inline-block;
-					width: 80%;
-					text-decoration: none;
-					font-size: 1.1rem;
-					padding: 10px;
-					font-weight: 500;
-					color: rgba(102, 102, 102, 1);
-
-					&:hover {
-						background-color: rgba(0, 0, 0, 0.468);
-					}
-
-					&.active {
-						color: rgba(0, 0, 0, 1);
-					}
-				}
 			}
 			& .navBarIcon {
 				display: none;

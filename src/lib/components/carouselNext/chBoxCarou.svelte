@@ -1,76 +1,60 @@
 <script lang="ts">
-	interface carouselInterface {
-		// Config
-		carouselDataSource: any[];
-		carouselDataTextSource?: string;
-		carouselDataHeaderSource?: string;
+    interface chBoxCarouInterface {
+        // Config
 
-		sliderToggle?: boolean;
-		sliderImage?: boolean;
-		sliderTextToggle?: boolean;
-		sliderHeading?: boolean;
 
-		// Style
+        checkboxSource: any[];
+        descriptionText: string;
+        descriptionButton: string;
+        descriptionImage: string;
 
-		// Function
-		active: number;
-		itemLength: number;
-	}
+        // Function
+    }
 
-	let {
-		//Config
-		carouselDataSource = [],
+    let {
+        //Config
 
-		sliderToggle = true,
-		sliderImage = false,
-		sliderTextToggle = true,
-		sliderHeading = true,
+        checkboxSource = [],
+        descriptionText = 'This is a description text of this check box',
+        descriptionButton = '',
+        descriptionImage = ''
 
-		// Function
-		itemLength = carouselDataSource.length,
-		active = 0
-	}: carouselInterface = $props();
+    }: chBoxCarouInterface = $props();
+    
 
+    let active = $state(0);
+	let itemLength = checkboxSource.length;
 	// Funtion
-
-	/* function setActive(index: number) {
-		active = index;
-	} */
-
 	const nextSlide = () => {
 		active = active + 1 > itemLength ? 0 : active + 1;
 	};
 
 	const prevSlide = () => {
-		active = active - 1 < 0 ? itemLength - 1 : active - 1;
+		active = active - 1 < 0 ? itemLength : active - 1;
 	};
+
 </script>
 
 <main>
-	<div class="carousel">
-		<div class="slides" style="transform: translateX({-active * 50}%)">
-
-			{#each carouselDataSource as { image, heading, carouselDataHeaderSource, carouselDataTextSource, index, link }}
-				<div class="slide" class:active={active === index}>
-					{#if sliderToggle}
-						<a href={link}><div class="slideText">
-							{#if sliderHeading}
-								<h2>{carouselDataHeaderSource}</h2>
-							{/if}
-							{#if sliderTextToggle}
-								<p>{carouselDataTextSource}</p>
-							{/if}
-						</div></a>
-					{/if}
-
-					{#if sliderImage}
-						<img src={image} alt={heading} />
-					{/if}
-				</div>
-			{/each}
+    <label class="check-box">
+        {#each checkboxSource as { descriptionText, descriptionButton, descriptionImage }}
+        <div class="heading-checked">
+			<input type="checkbox" name="" id="" />
+            <div class="dots"></div>
 		</div>
 
-		<!-- svelte-ignore a11y_click_events_have_key_events -->
+         <div class="description-checked">
+            <div class="description-text">
+                <p>{descriptionText}</p>
+                <button>{descriptionButton}</button>
+            </div>
+            <div class="description-image">
+                <img src={descriptionImage} alt="">
+            </div>
+         </div>
+        {/each}
+    </label>
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<div class="previous" onclick={prevSlide}>
 			<svg
@@ -98,7 +82,6 @@
 				</defs>
 			</svg>
 		</div>
-
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<div class="next" onclick={nextSlide}>
@@ -127,60 +110,77 @@
 				</defs>
 			</svg>
 		</div>
-	</div>
 </main>
 
 <style>
-	main {
-		& .carousel {
-			overflow-x: scroll;
-			position: relative;
-			width: 100%;
-			height: 20rem;
-			overflow-y: hidden;
-			scroll-behavior: smooth;
-			scroll-snap-type: x mandatory;
+    main {
+        & .check-box {
+            border: 1px solid #ccc;
+            width: fit-content;
+            display: block;
+            padding: 0.5rem;
+            transition: all 0.2s ease-in-out;
+            position: relative;
 
-			&::-webkit-scrollbar {
-				display: none;
-			}
+            & input[type="checkbox"] {
+                border-radius: 50%;
+            }
 
-			& .slides {
-				display: flex;
-				transition: all 0.5s ease;
+            &:hover {
+                transform: scale(1.1);
+            }
 
-				& .slide {
-					display: inline-block;
-					min-width: 50%;
-					box-sizing: border-box;
-					padding: 1.25rem;
-					overflow: hidden;
-					text-align: center;
-					width: 100%;
-					height: 20rem;
-					transition: all 0.2s ease-in-out;
-					scroll-snap-align: start;
+            &:active {
+                transform: scale(1);
+            }
 
-					& a {
-						text-decoration: none;
-						color: black;
-					}
+        }
+        
+        & .heading-checked {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+            padding: 0.5rem;
 
-					&:last-child {
-						scroll-snap-align: end;
-					}
+            & .dots {
+                background-color: red;
+                width: 0.75rem;
+                height: 0.75rem;
+                border-radius: 50%;
+                
+            }
+        }
 
-					&:hover {
-						transform: scale(1.1);
-					}
+        & .description-checked {
+            display: flex;
+            padding: 0.5rem;
+        }
 
-					& img {
-						aspect-ratio: 1/1;
-						border-radius: 0.5rem;
-					}
-				}
-			}
-		}
+        & .description-text {
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+            margin-right: 2rem;
+            width: 4.5rem;
+
+            & button {
+                margin-top: 0.5rem;
+                border: none;
+                background-color: red;
+                padding: 5px 12%;
+                border-radius: 25px;
+                text-align: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+        }
+
+        & .description-image {
+            border: 1px solid #ccc;
+            
+            & img {
+                width: 10rem;
+            }
+        }
 
 		& .previous,
 		& .next {
@@ -201,6 +201,5 @@
 			right: 1.875rem;
 			transform: translateY(-50%) rotate(180deg);
 		}
-
-	}
+    }
 </style>

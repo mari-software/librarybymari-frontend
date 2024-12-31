@@ -55,4 +55,20 @@
 			}
 		}
 	}
+
+	@media only screen and (max-width: 768px) {
+
+		main {
+			& .blog-lineup {
+				& .lineup-item {
+					&  p {
+						display: none;
+					}
+					& img {
+						width: 3rem;
+					}
+				}
+			}
+		}
+	}
 </style>
